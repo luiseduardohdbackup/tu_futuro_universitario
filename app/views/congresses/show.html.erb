@@ -1,0 +1,24 @@
+<% title "Congress" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @congress.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @congress.description %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @congress.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%= @congress.end_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_congress_path(@congress) %> |
+  <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", congresses_path %>
+</p>
