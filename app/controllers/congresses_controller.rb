@@ -13,7 +13,6 @@ class CongressesController < ApplicationController
 
   def create
     @congress = Congress.new(params[:congress])
-    debugger
     if @congress.save
       redirect_to @congress, :notice => "Successfully created congress."
     else

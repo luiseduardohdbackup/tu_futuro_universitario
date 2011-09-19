@@ -16,5 +16,9 @@
   <%= f.label "End" %><br />
   <%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar' %>
   </p>
+  <p>
+    <%= f.label "Add an image" %>
+    <%= f.file_field :image %>
+  </p>
   <p><%= f.submit %></p>
 <% end %>

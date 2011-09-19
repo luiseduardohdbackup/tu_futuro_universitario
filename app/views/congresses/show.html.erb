@@ -17,6 +17,8 @@
   <%= @congress.end_date %>
 </p>
 
+<%= image_tag @congress.image_url(:medium).to_s %>
+
 <p>
   <%= link_to "Edit", edit_congress_path(@congress) %> |
   <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
