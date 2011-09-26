@@ -9,16 +9,21 @@
   <%= f.text_area :description %>
   </p>
   <p>
-  <%= f.label "Start" %><br />
-  <%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar' %>
+  <table>
+    <tr>
+      <td><%= f.label "Start" %></td>
+      <td><%= f.label "End" %></td>
+    </tr>
+    <tr>
+      <td><%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar' %></td>
+      <td><%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar' %></td>
+    </tr>
+  </table>
   </p>
+  <%= (image_tag @congress.image_url(:thumb).to_s) if @congress.image %>
   <p>
-  <%= f.label "End" %><br />
-  <%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar' %>
-  </p>
-  <p>
-    <%= f.label "Add an image" %>
-    <%= f.file_field :image %>
+  <%= f.label "image" %>
+  <%= f.file_field :image %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

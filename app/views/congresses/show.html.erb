@@ -1,26 +1,22 @@
-<% title "Congress" %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @congress.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @congress.description %>
-</p>
-<p>
-  <strong>Start Date:</strong>
-  <%= @congress.start_date %>
-</p>
-<p>
-  <strong>End Date:</strong>
-  <%= @congress.end_date %>
-</p>
-
-<%= image_tag @congress.image_url(:medium).to_s %>
-
-<p>
+<div class='right'>
   <%= link_to "Edit", edit_congress_path(@congress) %> |
   <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", congresses_path %>
+</div>
+<div id='left_sidebar'>
+	<%= image_tag @congress.image_url(:medium).to_s %>	
+  </div>
+  <div id='main'>
+<h1><%= @congress.title %></h1>
+<p>
+<strong>From:</strong>
+  <%= @congress.start_date %>
+  <strong>To:</strong>
+  <%= @congress.end_date %>
 </p>
+<p>
+  <%= @congress.description %>
+</p>
+
+
+</div>
