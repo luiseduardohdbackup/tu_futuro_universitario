@@ -28,4 +28,15 @@ describe 'New congress' do
     click_on "Create Congress"
     page.should have_content "Start date needs to be a future date"
   end
+
+  it 'I can attach an image to the congress', :js => true do
+    visit new_congress_path
+    fill_in "congress_title", :with => "The super title"
+    fill_in "congress_description", :with => "The super description"
+    fill_in "congress_start_date", :with => Time.now + 1.day
+    fill_in "congress_end_date", :with => Time.now + 2.days
+    attach_file('congress_image',"#{Rails.root.to_s}/app/assets/images/rails.png")
+    click_on "Create Congress"
+    page.should have_xpath("//img[contains(@src, \"rails.png\")]")
+  end
 end
