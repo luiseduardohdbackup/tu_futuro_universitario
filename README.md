@@ -9,3 +9,4 @@
 1. [Railscasts de carrierwave](http://railscasts.com/episodes/253-carrierwave-file-uploads)
 2. [Railscasts de 3.1](http://railscasts.com/episodes/265-rails-3-1-overview)
 
+## prueba
