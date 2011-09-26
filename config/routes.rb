@@ -1,4 +1,6 @@
 TuFuturoUniversitario::Application.routes.draw do
+  resources :schools
+
   resources :congresses
 
   # The priority is based upon order of creation:
