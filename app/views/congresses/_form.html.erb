@@ -9,10 +9,14 @@
   <%= f.error_messages %>
   <p>
   <%= f.label :title %><br />
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :size => 100 %>
   </p>
   <p>
-  <%= f.text_area :description, :cols => 100%>
+  <%= f.label "image" %>
+  <%= f.file_field :image %>
+  </p>
+  <p>
+  <%= f.text_area :description, :cols => 73, :rows => 30%>
   </p>
   <table>
     <tr>
@@ -20,13 +24,13 @@
       <td><%= f.label "End" %></td>
     </tr>
     <tr>
-      <td><%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar' %></td>
-      <td><%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar' %></td>
+      <td><%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar', :size => 46 %></td>
+      <td><%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar', :size => 47 %></td>
     </tr>
   </table>
   <p>
-  <%= f.label "image" %>
-  <%= f.file_field :image %>
+  <%= f.label "Address"%><br />
+  <%= f.text_field :address, :size => 100 %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

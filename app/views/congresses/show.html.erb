@@ -23,6 +23,10 @@
   <div id='description'>
     <%= @congress.description.html_safe %>
   </div>
-
-
+  <div id='map'>
+    <div id='address'>
+      <%= @congress.address%><br />
+    </div>
+    <div><%= image_tag @congress.address_map%></div>
+  </div>
 </div>

@@ -1,23 +1,12 @@
 <% title "Congresses" %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-  </tr>
   <% for congress in @congresses %>
-    <tr>
-      <td><%= congress.title %></td>
-      <td><%= congress.description %></td>
-      <td><%= congress.start_date %></td>
-      <td><%= congress.end_date %></td>
-      <td><%= link_to "Show", congress %></td>
-      <td><%= link_to "Edit", edit_congress_path(congress) %></td>
-      <td><%= link_to "Destroy", congress, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <div class='congress'>
+    <div class='right'><%= Cicero.word %></div>
+      <div class='left'><%= image_tag congress.image_url(:thumb).to_s%></div>
+      <h4><%= link_to congress.title, congress%></h4>
+      Area: <%= Cicero.word %><br />
+      <%= congress.address%><br />
+      <div class='date small'><%= congress.start_date%></div>
+    </div>
   <% end %>
-</table>
-
-<p><%= link_to "New Congress", new_congress_path %></p>

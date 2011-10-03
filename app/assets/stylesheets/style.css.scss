@@ -31,6 +31,37 @@ a {
   margin-top: 20px;
   @include rounded(5px);
 }
+.congress{
+  &:hover{ background:#ddd; }
+  position:relative;
+  .left{ 
+    padding-right:10px;
+    height:80px; 
+  }
+  h4{margin:0 0 5px 0;}
+  .date{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+  }
+  width:450px;
+  @include rounded(5px);
+  border: 1px solid #999;
+  padding:5px;
+  height:120px;
+  margin:10px;
+}
+
+#map{
+  #address{
+    @include rounded(2px);
+    background:#666;
+    border: 1px solid #999;
+    color:#fff;
+    padding:5px;
+  }
+}
+
 .mini_time{
   margin:5px 0;
   background:#f90;
@@ -55,6 +86,7 @@ a {
 }
 .right{float:right;}
 .left{float:left;}
+.small{font-size:10px;}
 /*Notices*/
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
