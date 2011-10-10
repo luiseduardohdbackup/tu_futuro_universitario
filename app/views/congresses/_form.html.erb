@@ -18,6 +18,10 @@
   <p>
   <%= f.text_area :description, :cols => 73, :rows => 30%>
   </p>
+  <p>
+  <%= f.label :area %><br />
+  <%= f.select(:area_id , @areas.map { |area| [area.name, area.id]} ) %>
+  </p>
   <table>
     <tr>
       <td><%= f.label "Start" %></td>

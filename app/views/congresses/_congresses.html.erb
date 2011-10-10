@@ -1,0 +1,11 @@
+<% for congress in congresses %>
+  <div class='congress left'>
+    <div class='right'><%= Cicero.word %></div>
+    <div class='left'><%= image_tag congress.image_url(:thumb).to_s%></div>
+    <h4><%= link_to congress.title, congress%></h4>
+    <%= congress.area.name %><br />
+    <%= congress.address%><br />
+    <div class='date small'><%= congress.start_date%></div>
+  </div>
+<% end %>
+<div class='clear'></div>

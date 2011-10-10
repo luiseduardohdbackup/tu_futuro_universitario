@@ -9,6 +9,14 @@
   </head>
   <body>
     <div id="container">
+      <div id='top_menu'>
+        <ul>
+          <li><%= link_to 'Home', congresses_path%></li>
+          <li><%= link_to 'Areas', areas_path%></li>
+          <li><%= link_to 'New Congress', new_congress_path%></li>
+        </ul>
+        <div class='clear'></div>
+      </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

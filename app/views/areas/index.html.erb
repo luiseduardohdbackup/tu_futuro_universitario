@@ -1,0 +1,4 @@
+<% @areas.each do |area| %>
+  <div class='bar'><%= area.name %></div>
+  <%= render :partial => 'congresses/congresses', :locals =>{:congresses => area.congresses}%>
+<% end %>

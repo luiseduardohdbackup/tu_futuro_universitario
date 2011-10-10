@@ -1,8 +1,9 @@
 class Congress < ActiveRecord::Base
-  attr_accessible :start_date, :end_date, :title, :description, :image, :address
+  attr_accessible :start_date, :end_date, :title, :description, :image, :address, :area_id
 
   has_many :pictures
   has_many :applications, :dependent => :destroy
+  belongs_to :area
 
   validates :description, :start_date, :end_date, :presence => true
   validates :title, :presence => true, :uniqueness => true
@@ -24,8 +25,13 @@ class Congress < ActiveRecord::Base
   def get_google_address
     Geocoder.search("#{self.latitude}, #{self.longitude}")[0].address
   end
+
   def address_map
     "http://maps.google.com/maps/api/staticmap?size=600x300&sensor=false&zoom=16&markers=#{self.latitude}%2C#{self.longitude}"
+  end
+
+  def related_congresses
+    Congress.joins(:area).where("areas.id = #{self.area_id}")
   end
 
 end

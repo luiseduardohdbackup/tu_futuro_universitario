@@ -3,6 +3,13 @@
   -moz-border-radius:$px;
   -border-radius:$px;
 }
+@mixin gradient($color1, $color2){
+  background-image: linear-gradient(bottom, $color1 , $color2);
+  background-image: -o-linear-gradient(bottom, $color1,  $color2);
+  background-image: -moz-linear-gradient(bottom, $color1, $color2);
+  background-image: -webkit-linear-gradient(bottom, $color1, $color2);
+  background-image: -ms-linear-gradient(bottom, $color1, $color2);
+}
 body {
   background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
@@ -24,12 +31,36 @@ a {
 }
 
 #container {
+  position:relative;
   width: 1000px;
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
   margin-top: 20px;
   @include rounded(5px);
+}
+#top_menu{
+  margin-bottom:20px;
+  ul{
+    padding: 0;
+    li{
+      display: inline;
+    }
+    li a {
+      font-family: Arial;
+      font-size:14px;
+      text-decoration: none;
+      float:left;
+      padding: 10px 20px;
+      background-color: #f90;
+      color: #fff;
+      &:hover {
+        background-color: #4B7399;
+        margin-bottom:-2px;
+        padding-top:12px;
+      }
+    }
+  }
 }
 .congress{
   &:hover{ background:#ddd; }
@@ -50,6 +81,13 @@ a {
   padding:5px;
   height:120px;
   margin:10px;
+}
+.bar{
+  margin:10px 0;
+  color:#fff;
+  background:#ddd;
+  padding:5px;
+  @include gradient(#666, #999);
 }
 
 #map{
@@ -74,8 +112,28 @@ a {
 #left_sidebar{
   float:left;
   width:150px;
+}
+#right_sidebar{
+  float:right;
+  width:180px;
+  min-height:450px;
   padding-right:20px;
   overflow:hidden;
+  padding:10px;
+  background:#ddd;
+  @include rounded(5px);
+  border: 1px solid #f90;
+  padding:0px;
+  h4{padding:5px;}
+  #related{
+    ul{list-style:none;padding:0;margin:0px;}
+    li{
+      padding:10px;
+      border-bottom:1px solid #999;
+      a{text-decoration:none;}
+    }
+    li:hover{background:#ccc;}
+  }
 }
 #main{
   padding-left:180px;
@@ -163,8 +221,8 @@ a {
   margin-top:5px;
   text-align:center;
   a{
-  text-decoration:none;
-}
+    text-decoration:none;
+  }
   &:hover{
     background:#f90;
     border: 1px solid #dd;

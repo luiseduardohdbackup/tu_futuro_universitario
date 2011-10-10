@@ -1,4 +1,5 @@
 class CongressesController < ApplicationController
+  before_filter :areas, :only=>[:new,:edit,:create,:update]
   def index
     @congresses = Congress.all
   end
@@ -43,6 +44,11 @@ class CongressesController < ApplicationController
   def applications
     @congress = Congress.find(params[:id])
     @applications = @congress.applications
+  end
+
+  private
+  def areas
+    @areas = Area.all
   end
 
 end
