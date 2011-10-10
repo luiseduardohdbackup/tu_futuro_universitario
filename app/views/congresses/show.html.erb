@@ -24,12 +24,13 @@
 <div id='main'>
   <div class='right'>
     <%= link_to "Edit", edit_congress_path(@congress) %> |
-    <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", congresses_path %>
+    <%= link_to "Applications", applications_congress_path %> |
+    <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "All", congresses_path %>
   </div>
   <h1><%= @congress.title %></h1>
   <div id='apply_btn'>
-    <%= link_to "APLICA YA!", '#'%>
+    <%= link_to "APLICA YA!", new_application_path(:c => @congress)%>
   </div>
   <div id='description'>
     <%= @congress.description.html_safe %>

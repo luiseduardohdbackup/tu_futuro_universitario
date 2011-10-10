@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003174132) do
+ActiveRecord::Schema.define(:version => 20111010140754) do
+
+  create_table "applications", :force => true do |t|
+    t.integer  "congress_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "congresses", :force => true do |t|
     t.string   "title"

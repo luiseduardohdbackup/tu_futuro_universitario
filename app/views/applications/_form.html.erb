@@ -1,0 +1,27 @@
+<%javascript 'tiny_mce'%>
+<script>
+  tinyMCE.init({
+    mode : "textareas",
+    theme : "simple"
+  });
+</script>
+<p>
+<%= link_to "Back to congress", congress_path(params[:c]) %>
+</p>
+<%= form_for @application do |f| %>
+  <%= f.error_messages %>
+  <% if @application.congress_id.present?%>
+    <%= f.hidden_field :congress_id, :value => @application.congress_id%>
+  <%else%>
+    <%= f.hidden_field :congress_id, :value => params[:c] %>
+  <%end%>
+  <p>
+  <%= f.label :title %><br />
+  <%= f.text_field :title, :size => 100 %>
+  </p>
+  <p>
+  <%= f.label :body %><br />
+  <%= f.text_area :body, :cols => 73, :rows => 30%>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

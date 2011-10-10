@@ -2,6 +2,7 @@ class Congress < ActiveRecord::Base
   attr_accessible :start_date, :end_date, :title, :description, :image, :address
 
   has_many :pictures
+  has_many :applications, :dependent => :destroy
 
   validates :description, :start_date, :end_date, :presence => true
   validates :title, :presence => true, :uniqueness => true

@@ -39,4 +39,10 @@ class CongressesController < ApplicationController
     @congress.destroy
     redirect_to congresses_url, :notice => "Successfully destroyed congress."
   end
+
+  def applications
+    @congress = Congress.find(params[:id])
+    @applications = @congress.applications
+  end
+
 end
