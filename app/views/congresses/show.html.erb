@@ -12,17 +12,39 @@
       <%= @congress.end_date.strftime("%I:%M:%P") %>
     </div>
   </div>
+  <b>Add a picture</b>
+  <div id='picture_form'>
+    <%= form_for @picture do |f|%>
+      <%= f.hidden_field :congress_id, :value => @congress.id %>
+      <%= f.file_field :image%>
+      <%= f.submit "Add"%>
+    <%end%>
+  </div>
 </div>
 <div id='main'>
-<div class='right'>
-  <%= link_to "Edit", edit_congress_path(@congress) %> |
-  <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", congresses_path %>
-</div>
+  <div class='right'>
+    <%= link_to "Edit", edit_congress_path(@congress) %> |
+    <%= link_to "Destroy", @congress, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", congresses_path %>
+  </div>
   <h1><%= @congress.title %></h1>
+  <div id='apply_btn'>
+    <%= link_to "APLICA YA!", '#'%>
+  </div>
   <div id='description'>
     <%= @congress.description.html_safe %>
   </div>
+  <ul id='pictures'>
+    <% @congress.pictures.each do |pic|%>
+      <li><%= link_to (image_tag pic.image_url(:list).to_s), "#{pic.image_url.to_s}", :rel => "pictures"%></li>
+    <%end%>
+  </ul>
+
+
+
+
+
+
   <div id='map'>
     <div id='address'>
       <%= @congress.address%><br />

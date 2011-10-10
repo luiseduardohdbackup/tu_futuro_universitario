@@ -8,4 +8,5 @@
 //= require jquery_ujs
 //= require jquery-ui-1.8.16.custom.min
 //= require timepicker
+//= require fancybox
 //= require tfu

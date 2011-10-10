@@ -1,9 +1,12 @@
 class Congress < ActiveRecord::Base
   attr_accessible :start_date, :end_date, :title, :description, :image, :address
 
+  has_many :pictures
+
   validates :description, :start_date, :end_date, :presence => true
   validates :title, :presence => true, :uniqueness => true
   validate  :future_date?, :valid_date?
+
   mount_uploader :image, ImageUploader
 
   geocoded_by :address

@@ -1,5 +1,7 @@
 TuFuturoUniversitario::Application.routes.draw do
+
   resources :congresses
+  match 'pictures' => 'pictures#create', :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -75,6 +75,7 @@ a {
   float:left;
   width:150px;
   padding-right:20px;
+  overflow:hidden;
 }
 #main{
   padding-left:180px;
@@ -140,3 +141,36 @@ a {
 .ui-timepicker-div dl dt{ height: 25px; }
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
+
+#apply_btn{
+  @include rounded(5px);
+  background:#ddd;
+  border: 1px solid #f90;
+  overflow:hidden;
+  padding:10px 4px;
+  margin-top:5px;
+  text-align:center;
+  a{
+  text-decoration:none;
+}
+  &:hover{
+    background:#f90;
+    border: 1px solid #dd;
+
+  }
+}
+#picture_form{
+  @include rounded(5px);
+  background:#ddd;
+  border: 1px solid #f90;
+  overflow:hidden;
+  padding:10px 4px;
+  margin-top:5px;
+}
+
+/*fancybox*/
+
+ul#pictures{
+  li{ display:inline;}
+  list-style:none;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926161920) do
+ActiveRecord::Schema.define(:version => 20111003174132) do
 
   create_table "congresses", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20110926161920) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "image"
+    t.text     "description"
+    t.integer  "congress_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

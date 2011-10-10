@@ -4,6 +4,7 @@ class CongressesController < ApplicationController
   end
 
   def show
+    @picture = Picture.new
     @congress = Congress.find(params[:id])
   end
 
