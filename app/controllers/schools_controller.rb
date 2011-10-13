@@ -1,7 +1,7 @@
 class SchoolsController < ApplicationController
   def index
     #@school = School.page(params[:page]).per(50)
-    @school = School.where("name LIKE ?", "%#{params[:q]}%")
+    @school = School.where("name LIKE ? or contact LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
 
     @school_names = Array.new
     @contact_names = Array.new
@@ -20,7 +20,7 @@ class SchoolsController < ApplicationController
   end
 
   def more_schools
-    @school = School.where("name LIKE ?", "%#{params[:q]}%").page(params[:page]).per(10)
+    @school = School.where("name LIKE ? or contact LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").page(params[:page]).per(10)
     render :layout => false
   end
 
