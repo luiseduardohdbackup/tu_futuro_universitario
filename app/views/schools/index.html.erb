@@ -1,21 +1,76 @@
 <% title "Schools" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Contact</th>
-    <th>Phone</th>
-  </tr>
-  <% for school in @schools %>
-    <tr>
-      <td><%= school.name %></td>
-      <td><%= school.contact %></td>
-      <td><%= number_to_phone(school.phone) %></td>
-      <td><%= link_to "Show", school %></td>
-      <td><%= link_to "Edit", edit_school_path(school) %></td>
-      <td><%= link_to "Destroy", school, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<%= form_tag('/schools', :method => :get, :autocomplete => "off") do  %>
+  <%= text_field_tag :q, params[:q], :id => "search_field" %>
+  <%= submit_tag "Enviar", :name => nil %>
+<% end %>
 
 <p><%= link_to "New School", new_school_path %></p>
+
+<div id="schools">
+  <%= render :partial => @school %>
+</div>
+
+<div id="next_link">
+  <% if !@school.last_page? %>
+    <%= link_to "Load more", '#', :controller => "schools", :action => "more_schools", :class => "next" %>
+  <% end %>
+</div>
+
+<style>
+	.ui-autocomplete-category {
+		font-weight: bold;
+		padding: .2em .4em;
+		margin: .8em 0 .2em;
+		line-height: 1.5;
+	}
+</style>
+<script>
+	$("#q").bind("textchange", function(){
+		$.get("/schools.js", {q: $("#q").val()});
+	});
+ 
+  $.widget( "custom.catcomplete", $.ui.autocomplete, {
+		_renderMenu: function( ul, items ) {
+			var self = this,
+				currentCategory = "";
+			$.each( items, function( index, item ) {
+				if ( item.category != currentCategory ) {
+					ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+					currentCategory = item.category;
+				}
+				self._renderItem( ul, item );
+			});
+		}
+	});
+
+  $(function() {
+    var data = [
+      <% @school_names.each do |school| %>
+        { label: "<%= school %>", category: "Escuela" },
+      <% end %>
+      <% @contact_names.each do |contact| %>
+        { label: "<%= contact %>", category: "Contacto" },
+      <% end %>
+    ];
+    $("#search_field").catcomplete({
+      delay: 0,
+      source: data
+    });
+  });
+
+  function loadMore(pageNo) {
+    var url = '/schools/page/';
+    <% searchf = "?utf8=✓&q="+params[:q] if !params[:q].nil?%>
+    $.get(url + pageNo + '<%= searchf %>', function(response) {
+      $("#schools").append(response);
+    });
+  }
+
+  $(document).ready(function() {
+    var currPage = 1;
+    $("a.next").click(function() {
+      loadMore(++currPage);
+    });
+  });
+</script>

@@ -1,7 +1,8 @@
 TuFuturoUniversitario::Application.routes.draw do
   resources :schools
-
+    get 'schools/page/:page', :controller => :schools, :action => "more_schools"
   resources :congresses
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,27 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.all
+    #@school = School.page(params[:page]).per(50)
+    @school = School.where("name LIKE ?", "%#{params[:q]}%")
+
+    @school_names = Array.new
+    @contact_names = Array.new
+    School.all.each do |school|
+      @school_names.push(school.name) if !@school_names.include? school.name
+      @contact_names.push(school.contact) if !@contact_names.include? school.contact
+    end
+
+    @school = @school.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js 
+      format.json { render :json => @school.map(&:attributes) }
+      format.xml  { render :xml => @school }
+    end
+  end
+
+  def more_schools
+    @school = School.where("name LIKE ?", "%#{params[:q]}%").page(params[:page]).per(10)
+    render :layout => false
   end
 
   def show
