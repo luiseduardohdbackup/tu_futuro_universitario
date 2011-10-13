@@ -1,4 +1,4 @@
-<%javascript 'tiny_mce'%>
+<%javascript 'tiny_mce', 'form'%>
 <script>
   tinyMCE.init({
     mode : "textareas",
@@ -33,8 +33,15 @@
     </tr>
   </table>
   <p>
-  <%= f.label "Address"%><br />
-  <%= f.text_field :address, :size => 100 %>
+    <%= f.label "Where?"%><br />
+    </p>
+    <p>
+    <%= radio_button "congress", "address","auditorio_luis_elizondo", :class=>'congress_radio'%> Auditorio Luis Elizondo
+    <%= radio_button "congress", "address","centro_estudiantil", :class => 'congress_radio'%> Centro estudiantil
+    <%= radio_button "congress", "address","otro", :class => 'congress_radio'%> Otro <br />
+  <div id='address'>
+    <%= f.text_field :text_address, :size => 100, :value => (@congress.address unless @congress.default_address? or @congress.address=='otro') %>
+  </div>
   </p>
   <p><%= f.submit %></p>
 <% end %>

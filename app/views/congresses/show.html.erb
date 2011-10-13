@@ -53,9 +53,16 @@
     <%end%>
   </ul>
   <div id='map'>
-    <div id='address'>
-      <%= @congress.address%><br />
-    </div>
-    <div><%= image_tag @congress.address_map%></div>
+    <% if @congress.default_address?%>
+      <div id='address'>
+        Tecnológico de Monterrey - <%= @congress.address.humanize.titleize%><br />
+      </div>
+      <div><%= image_tag @congress.default_map, :width => 605%></div>
+    <%else%>
+      <div id='address'>
+        <%= @congress.address%><br />
+      </div>
+      <div><%= image_tag @congress.address_map%></div>
+    <%end%>
   </div>
 </div>
