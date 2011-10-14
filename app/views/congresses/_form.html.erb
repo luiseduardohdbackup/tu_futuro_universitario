@@ -1,4 +1,4 @@
-<%javascript 'tiny_mce'%>
+<%javascript 'tiny_mce', 'form'%>
 <script>
   tinyMCE.init({
     mode : "textareas",
@@ -9,10 +9,18 @@
   <%= f.error_messages %>
   <p>
   <%= f.label :title %><br />
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :size => 100 %>
   </p>
   <p>
-  <%= f.text_area :description, :cols => 100%>
+  <%= f.label "image" %>
+  <%= f.file_field :image %>
+  </p>
+  <p>
+  <%= f.text_area :description, :cols => 73, :rows => 30%>
+  </p>
+  <p>
+  <%= f.label :area %><br />
+  <%= f.select(:area_id , @areas.map { |area| [area.name, area.id]} ) %>
   </p>
   <table>
     <tr>
@@ -20,13 +28,20 @@
       <td><%= f.label "End" %></td>
     </tr>
     <tr>
-      <td><%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar' %></td>
-      <td><%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar' %></td>
+      <td><%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar', :size => 46 %></td>
+      <td><%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar', :size => 47 %></td>
     </tr>
   </table>
   <p>
-  <%= f.label "image" %>
-  <%= f.file_field :image %>
+    <%= f.label "Where?"%><br />
+    </p>
+    <p>
+    <%= radio_button "congress", "address","auditorio_luis_elizondo", :class=>'congress_radio'%> Auditorio Luis Elizondo
+    <%= radio_button "congress", "address","centro_estudiantil", :class => 'congress_radio'%> Centro estudiantil
+    <%= radio_button "congress", "address","otro", :class => 'congress_radio'%> Otro <br />
+  <div id='address'>
+    <%= f.text_field :text_address, :size => 100, :value => (@congress.address unless @congress.default_address? or @congress.address=='otro') %>
+  </div>
   </p>
   <p><%= f.submit %></p>
 <% end %>

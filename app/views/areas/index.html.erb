@@ -1,0 +1,18 @@
+<script>
+  $(function() {
+		$( "#accordion" ).accordion({
+			autoHeight: false,
+			event: "mouseover",
+			navigation: true
+		});
+	});
+  </script>
+  <div id='accordion'>
+    <% @areas.each do |area| %>
+      <h3><%= link_to area.name, '#' %></h3>
+      <div>
+        <%= render :partial => 'congresses/congresses', :locals =>{:congresses => area.congresses}%>
+      </div>
+    <% end %>
+  </div>
+  

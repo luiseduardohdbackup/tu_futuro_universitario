@@ -1,0 +1,20 @@
+<% title "Applications" %>
+
+<table>
+  <tr>
+    <th>Congress</th>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <% for application in @applications %>
+    <tr>
+      <td><%= application.congress_id %></td>
+      <td><%= application.title %></td>
+      <td><%= application.body %></td>
+      <td><%= link_to "Show", application %></td>
+      <td><%= link_to "Edit", edit_application_path(application) %></td>
+      <td><%= link_to "Destroy", application, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+

@@ -1,0 +1,17 @@
+<h1><%= @congress.title%></h1>
+
+<p>
+<%= link_to "Back to congress", congress_path %>
+</p>
+
+<h2><%= pluralize(@applications.size, 'Application')%></h2>
+
+<div>
+  <% @applications.each do |application|%>
+    <div class='application'>
+      <%= link_to application.title, application%>
+      </div>
+  <%end%>
+</div>
+
+

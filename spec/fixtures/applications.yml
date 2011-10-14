@@ -1,0 +1,9 @@
+one:
+  congress_id: 1
+  title: MyString
+  body: MyText
+
+two:
+  congress_id: 1
+  title: MyString
+  body: MyText

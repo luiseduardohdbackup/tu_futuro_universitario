@@ -1,8 +1,17 @@
 TuFuturoUniversitario::Application.routes.draw do
   resources :schools
-    get 'schools/page/:page', :controller => :schools, :action => "more_schools"
-  resources :congresses
+  get 'schools/page/:page', :controller => :schools, :action => "more_schools"
 
+
+  resources :congresses do
+    member do
+      get 'applications'
+    end
+  end
+  resources :applications
+
+  match 'pictures' => 'pictures#create', :via => :post
+  match 'areas' => 'areas#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

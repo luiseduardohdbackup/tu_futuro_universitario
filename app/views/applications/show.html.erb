@@ -1,0 +1,10 @@
+<h2>Application for <%= @application.congress.title %></h2>
+<p>
+<%= link_to "Destroy", @application, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to "View All", applications_congress_path(@application.congress) %>
+</p>
+<div id='application'>
+  <h2><%= @application.title %></h2>
+  <%= @application.body.html_safe %>
+
+</div>

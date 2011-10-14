@@ -1,9 +1,11 @@
 class CongressesController < ApplicationController
+  before_filter :areas, :only=>[:new,:edit,:create,:update]
   def index
     @congresses = Congress.all
   end
 
   def show
+    @picture = Picture.new
     @congress = Congress.find(params[:id])
   end
 
@@ -38,4 +40,15 @@ class CongressesController < ApplicationController
     @congress.destroy
     redirect_to congresses_url, :notice => "Successfully destroyed congress."
   end
+
+  def applications
+    @congress = Congress.find(params[:id])
+    @applications = @congress.applications
+  end
+
+  private
+  def areas
+    @areas = Area.all
+  end
+
 end
