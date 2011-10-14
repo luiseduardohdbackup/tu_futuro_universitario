@@ -12,10 +12,10 @@ namespace :db do
       school.phone = 1000000..9999999999999
     end
 
-    unless Area.count.zero?
+    # unless Area.count.zero?
       areas = ["Agricultura y Alimentos", "Arquitectura", "Ciencias Sociales y Humanidades", "Comunicación y Periodismo", "Derecho", "Diseño y Arte aplicado", "Ingeniería y Ciencias", "Negocios y Administración", "Salud", "Tecnologías de Información y Electrónica", "Concentraciones"]
       areas.each {|area| Area.create(:name => area)}
-    end
+    # end
 
     areas_ids = Area.all.map(&:id)
     Congress.populate 15 do |congress|
