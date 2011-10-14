@@ -9,3 +9,11 @@
 1. [Railscasts de carrierwave](http://railscasts.com/episodes/253-carrierwave-file-uploads)
 2. [Railscasts de 3.1](http://railscasts.com/episodes/265-rails-3-1-overview)
 
+## Complementos de test
+
+1. Para generar registros de prueba, en consola escriban
+    rake db:populate
+
+Recuerden correr el comando para las gemas del proyecto
+    bundle install
+
