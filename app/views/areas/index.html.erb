@@ -1,12 +1,3 @@
-<script>
-  $(function() {
-		$( "#accordion" ).accordion({
-			autoHeight: false,
-			event: "mouseover",
-			navigation: true
-		});
-	});
-  </script>
   <div id='accordion'>
     <% @areas.each do |area| %>
       <h3><%= link_to area.name, '#' %></h3>

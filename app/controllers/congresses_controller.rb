@@ -1,5 +1,6 @@
 class CongressesController < ApplicationController
   before_filter :areas, :only=>[:new,:edit,:create,:update]
+  # load_and_authorize_resource
   def index
     @congresses = Congress.all
   end
