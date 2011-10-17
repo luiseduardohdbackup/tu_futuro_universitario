@@ -2,7 +2,7 @@ table {
   width: 100%;
 }
 
-table thead {
+table thead tr {
   width: 40px;
   height: 40px;
   background: url('images/ui-bg_diagonals-thick_20_e69700_40x40.png');
