@@ -7,6 +7,11 @@
     'showNavArrows' : true,
     'cyclic'        : true
   });
+		$( "#accordion" ).accordion({
+			autoHeight: false,
+			event: "mouseover",
+			navigation: true
+		});
 });`
 
 

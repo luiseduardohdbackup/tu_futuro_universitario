@@ -1,0 +1,21 @@
+<table class='big_table'>
+  <tr class='heading'>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Role</td>
+    <td></td>
+  </tr>
+  <% @users.each do |user| %>
+    <tr class='content'>
+      <td><%= user.name%></td>
+      <td><%= user.email%></td>
+      <td><%= user.role.humanize %></td>
+      <td>
+        <% if can? :manage, User%>
+          <%= link_to 'Edit', edit_user_path(user)%> |
+          <%= link_to "X", user, :confirm => 'Are you sure?', :method => :delete %> 
+        <% end%>
+      </td>
+    </tr>
+  <% end %>
+</table>

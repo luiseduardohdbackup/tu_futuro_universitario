@@ -39,8 +39,13 @@ a {
   margin-top: 20px;
   @include rounded(5px);
 }
+#session_menu{
+  float:right;
+}
 #top_menu{
   margin-bottom:20px;
+}
+#top_menu, #session_menu{
   ul{
     padding: 0;
     li{
@@ -60,6 +65,16 @@ a {
         padding-top:12px;
       }
     }
+  }
+}
+.big_table{
+  .heading{background:#777; color:#fff;}
+  border-spacing:0px;
+  tr.content:hover{
+    background:#ddd;
+  }
+  td{
+    padding:7px 20px;
   }
 }
 .congress{
