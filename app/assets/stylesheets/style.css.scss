@@ -30,20 +30,41 @@ a {
   overflow: hidden;
 }
 
+#header {
+  position:relative;
+}
+
+#header img {
+  width:1080px;
+  height:180px;
+  margin-top:-65px;
+  margin-left:-40px;
+}
 #container {
   position:relative;
   width: 1000px;
   margin: 0 auto;
+  overflow: visible;
   background-color: #FFF;
-  padding: 20px 40px;
-  margin-top: 20px;
+  padding: 0px 40px;
+  margin-top: 70px;
   @include rounded(5px);
 }
 #session_menu{
-  float:right;
-}
+  /*float:right;*/
+  position: absolute;
+  top: -56px;
+  right:0px;
+ }
 #top_menu{
-  margin-bottom:20px;
+  position: absolute;
+  bottom: 0px;
+  right:0px;
+
+}
+#top_menu li a.activo {
+  background:url("tab_active.png") no-repeat;
+  color:#336699;
 }
 #top_menu, #session_menu{
   ul{
@@ -56,14 +77,16 @@ a {
       font-size:14px;
       text-decoration: none;
       float:left;
-      padding: 10px 20px;
-      background-color: #f90;
+      /*padding: 10px 20px;*/
+      /*background-color: #f90;*/
+      background:url("tab.png") no-repeat;
+      width:100px;
+      height:26px;
+      text-align:center;
+      padding-top:10px;
       color: #fff;
       &:hover {
-        background-color: #4B7399;
-        margin-bottom:-2px;
-        padding-top:12px;
-      }
+        background:url("tab_hover.png") no-repeat;      }
     }
   }
 }
