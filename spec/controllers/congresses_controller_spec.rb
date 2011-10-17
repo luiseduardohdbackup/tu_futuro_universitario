@@ -1,12 +1,20 @@
 require 'spec_helper'
 
 describe CongressesController do
+
+  include Devise::TestHelpers
+  before (:each) do
+    @user = Factory(:user, :role=>"admin")
+    sign_in @user
+  end
+
   describe '#new' do
     it 'Creates a congress object' do
       get :new
       assigns(:congress).should be_present
     end
   end
+
   describe '#create' do
     context 'With valid params' do 
       let(:params){{:congress => Factory.build(:congress).attributes}}

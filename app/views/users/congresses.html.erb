@@ -1,0 +1,7 @@
+<% if @congresses.empty? %>
+  <h2>You have no congresses</h2>
+  <%= link_to "Create One!", new_congress_path%>
+<%else%>
+  <h2>Here are your congresses</h2>
+  <%= render :partial => 'congresses/congresses', :locals => {:congresses => @congresses}%>
+<% end%>
