@@ -1,0 +1,20 @@
+<div class='box'>
+  <%= form_for @user  do |f|%>
+    <%= f.error_messages %>
+    <p>
+    <%= f.label :name%><br />
+    <%= f.text_field :name%>
+    </p>
+    <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email%>
+    </p>
+    <p>
+    <%= f.label :role %><br />
+    <%= f.select :role, User::ROLES.map{|role| [role.humanize, role]}%>
+    </p>
+    <p>
+    <%= f.submit "Update user" %>
+    </p>
+  <% end %>
+</div>

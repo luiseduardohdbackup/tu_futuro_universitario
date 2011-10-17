@@ -16,6 +16,7 @@
     <%= f.hidden_field :congress_id, :value => params[:c] %>
   <%end%>
   <p>
+  <%= f.hidden_field :user_id, :value => (@application.user.present? ? @application.user_id : current_user.id)%>
   <%= f.label :title %><br />
   <%= f.text_field :title, :size => 100 %>
   </p>

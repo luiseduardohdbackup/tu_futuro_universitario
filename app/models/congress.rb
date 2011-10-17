@@ -1,12 +1,13 @@
 class Congress < ActiveRecord::Base
-  attr_accessible :start_date, :end_date, :title, :description, :image, :address, :area_id, :text_address
+  attr_accessible :start_date, :end_date, :title, :description, :image, :address, :area_id, :text_address, :user_id
   attr_accessor :text_address
 
   has_many :pictures
   has_many :applications, :dependent => :destroy
   belongs_to :area
+  belongs_to :user
 
-  validates :description, :start_date, :end_date, :presence => true
+  validates :user_id, :description, :start_date, :end_date, :presence => true
   validates :title, :presence => true, :uniqueness => true
   validates :address, :presence => true, :unless => :text_address?
   validates :text_address, :presence => true, :unless => :default_address?
