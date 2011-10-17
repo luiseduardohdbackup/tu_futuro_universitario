@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe 'New congress' do
+  include Devise::TestHelpers
+  before (:each) do
+    @user = Factory(:user, :role=>"admin")
+    sign_in @user
+  end
+
   it 'I can create a new congress' do
     visit new_congress_path
     fill_in "congress_title", :with => "The super title"

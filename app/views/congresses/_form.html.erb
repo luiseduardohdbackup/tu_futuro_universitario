@@ -11,6 +11,7 @@
   <%= f.label :title %><br />
   <%= f.text_field :title, :size => 100 %>
   </p>
+  <%= f.hidden_field :user_id, :value => (@congress.user.present? ? @congress.user_id : current_user.id)%>
   <p>
   <%= f.label "image" %>
   <%= f.file_field :image %>

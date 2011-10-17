@@ -2,14 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # if user.present?
-    #   can :create, Congress
-    #   can :manage, Congress do |c|
-    #       c.try(:user) == user
-    #     end
-    #   can :manage, Application
-    # else
-    #   can :read, :all
-    # end
+    user ||= User.new
+    if user.super_admin?
+      can :manage, :all
+    elsif user.admin?
+      can :create, Congress
+      can :manage, Congress do |c|
+          c.try(:user) == user
+        end
+      can :manage, Application do |a|
+        a.congress.user == user || a.user == user
+      end
+    elsif user.student?
+      can :create, Application
+    end
+    can :read, :all
   end
 end

@@ -36,10 +36,12 @@
 <div id='main'>
   <h1><%= @congress.title %></h1>
   <div>
-    <%= link_to "Edit", edit_congress_path(@congress) %> |
-    <%= link_to "Applications", applications_congress_path %> |
-    <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "All", congresses_path %>
+    <% if can? :manage, @congress%>
+      <%= link_to "Edit", edit_congress_path(@congress) %> |
+      <%= link_to "Applications", applications_congress_path %> |
+      <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
+      <%= link_to "All", congresses_path %>
+    <% end%>
   </div>
   <div id='apply_btn'>
     <%= link_to "APLICA YA!", new_application_path(:c => @congress)%>

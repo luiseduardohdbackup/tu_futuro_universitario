@@ -9,7 +9,7 @@
 <div>
   <% @applications.each do |application|%>
     <div class='application'>
-      <%= link_to application.title, application%>
+      <%= link_to application.title, application%> | <%= application.user.email%>
       </div>
   <%end%>
 </div>
