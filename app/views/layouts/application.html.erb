@@ -25,7 +25,9 @@
         <ul>
           <li><%= link_to 'Home', congresses_path%></li>
           <li><%= link_to 'Areas', areas_path%></li>
-          <li><%= link_to 'Schools', schools_path%></li>
+	  <% if can? :manage, School %>
+            <li><%= link_to 'Schools', schools_path%></li>
+	  <%end%>
           <% if can? :create, Congress%>
             <li><%= link_to 'New Congress', new_congress_path%></li>
             <li><%= link_to 'My Congress', congresses_user_path(current_user)%></li>

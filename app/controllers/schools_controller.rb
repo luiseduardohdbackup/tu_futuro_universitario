@@ -1,4 +1,6 @@
 class SchoolsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     #@school = School.page(params[:page]).per(50)
     @school = School.where("name LIKE ? or contact LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
