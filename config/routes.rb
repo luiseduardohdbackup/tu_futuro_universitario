@@ -13,6 +13,8 @@ TuFuturoUniversitario::Application.routes.draw do
   match 'pictures' => 'pictures#create', :via => :post
   match 'areas' => 'areas#index'
 
+  root :to => "main#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

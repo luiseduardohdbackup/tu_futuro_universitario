@@ -7,13 +7,27 @@
 
 <p><%= link_to "New School", new_school_path %></p>
 
-<div id="schools">
-  <%= render :partial => @school %>
-</div>
+<table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="schools">
+      <%= render :partial => @school %>
+  </tbody>
+</table>
 
 <div id="next_link">
   <% if !@school.last_page? %>
-    <%= link_to "Load more", '#', :controller => "schools", :action => "more_schools", :class => "next" %>
+    <br/>
+    <center>
+      <%= button_tag "Load more", :class => "next", :style => "width:300px;" %>
+    </center>
   <% end %>
 </div>
 
@@ -69,7 +83,7 @@
 
   $(document).ready(function() {
     var currPage = 1;
-    $("a.next").click(function() {
+    $("button.next").click(function() {
       loadMore(++currPage);
     });
   });
