@@ -8,7 +8,15 @@
 <p><%= link_to "New School", new_school_path %></p>
 
 <div id="schools">
+  <table class='big_table'>
+    <tr class='heading'>
+      <td>Name</td>
+      <td>Contact</td>
+      <td>Phone</td>
+      <td></td>
+    </tr>
   <%= render :partial => @school %>
+  </table>
 </div>
 
 <div id="next_link">

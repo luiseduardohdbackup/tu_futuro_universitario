@@ -14,11 +14,6 @@ class User < ActiveRecord::Base
 
   validates :name, :role, :presence => true
 
-  before_create :set_student
-
-  def set_student
-    self.role = 'student'
-  end
   def super_admin?
     self.role == 'super_admin'
   end

@@ -1,9 +1,10 @@
-<div id="schools_content">  
-  <%= school.id %>
-  <%= school.name %>
-  <%= school.contact %>
-  <%= number_to_phone(school.phone) %>
-  <%= link_to "Show", school %>
-  <%= link_to "Edit", edit_school_path(school) %>
-  <%= link_to "Destroy", school, :confirm => 'Are you sure?', :method => :delete %>
-</div>
+<tr class='content'>
+  <td><%= school.name %></td>
+  <td><%= school.contact %></td>
+  <td><%= number_to_phone(school.phone) %></td>
+  <td>
+    <%= link_to "Show", school %> | 
+    <%= link_to "Edit", edit_school_path(school) %> |
+    <%= link_to "X", school, :confirm => 'Are you sure?', :method => :delete %> 
+  </td>
+</tr>

@@ -18,6 +18,7 @@ namespace :db do
     # end
 
     areas_ids = Area.all.map(&:id)
+    admin = Factory(:user, :role => 'admin')
     Congress.populate 15 do |congress|
       congress.title = Populator.words(4).capitalize
       congress.description = Populator.paragraphs(3)
@@ -25,6 +26,7 @@ namespace :db do
       congress.end_date = congress.start_date + rand(10).to_i.days
       congress.area_id =  areas_ids.sample
       congress.address = 'auditorio_luis_elizondo'
+      congress.user_id = admin.id
     end
 
     congresses_ids = Congress.all.map(&:id)
@@ -32,6 +34,7 @@ namespace :db do
       application.title = Populator.words(3)
       application.body = Populator.paragraphs(3)
       application.congress_id = congresses_ids.sample
+      application.user_id = Factory(:user).id
     end
   end
 end

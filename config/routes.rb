@@ -10,7 +10,11 @@ TuFuturoUniversitario::Application.routes.draw do
     end
   end
   resources :applications
-  resources :users
+  resources :users do
+    member do
+      get 'congresses'
+    end
+  end
 
   match 'pictures' => 'pictures#create', :via => :post
   match 'areas' => 'areas#index'

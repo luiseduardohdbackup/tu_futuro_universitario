@@ -29,4 +29,9 @@ class UsersController < ApplicationController
     redirect_to users_url, :notice => "Successfully destroyed user."
   end
 
+  def congresses
+    @user = User.find(params[:id])
+    @congresses = @user.congresses
+  end
+
 end
