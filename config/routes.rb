@@ -3,13 +3,17 @@ TuFuturoUniversitario::Application.routes.draw do
   get 'schools/page/:page', :controller => :schools, :action => "more_schools"
 
   devise_for :users
-
+ 
   resources :congresses do
     member do
       get 'applications'
     end
   end
-  resources :applications
+  resources :applications do
+  		member do
+			post 'rate'
+		end
+  	end
   resources :users do
     member do
       get 'congresses'
