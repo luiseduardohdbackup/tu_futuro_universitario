@@ -7,7 +7,7 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'populator'
 gem 'kaminari'
 gem 'geocoder'
