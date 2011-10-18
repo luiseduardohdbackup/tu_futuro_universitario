@@ -8,7 +8,7 @@ class Ability
     elsif user.admin?
       can :create, Congress
       can :manage, Congress do |c|
-          c.try(:user) == user
+          c.user == user
         end
       can :manage, Application do |a|
         a.congress.user == user || a.user == user

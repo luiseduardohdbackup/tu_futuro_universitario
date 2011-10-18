@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   def index
     @applications = Application.all
   end
@@ -42,6 +42,6 @@ class ApplicationsController < ApplicationController
 
   def rate
 	@application = Application.find(params[:id])
-	@application.rate(params[:stars], User.last)
+	@application.rate(params[:stars], current_user)
   end
 end
