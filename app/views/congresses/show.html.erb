@@ -34,7 +34,7 @@
 </div>
 
 <div id='main'>
-  <h1><%= @congress.title %></h1>
+  <h1 class="congress_title"><%= @congress.title %></h1>
   <div>
     <% if can? :manage, @congress%>
       <%= link_to "Edit", edit_congress_path(@congress) %> |

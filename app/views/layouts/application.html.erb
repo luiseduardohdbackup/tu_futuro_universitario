@@ -26,15 +26,15 @@
       </div>
       <div id='top_menu'>
         <ul>
-          <li><%= link_to 'Home', congresses_path, :class => "activo"%></li>
-          <li><%= link_to 'Areas', areas_path%></li>
-          <li><%= link_to 'Schools', schools_path%></li>
+          <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
+          <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
+          <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
           <% if can? :create, Congress%>
-            <li><%= link_to 'New Congress', new_congress_path%></li>
-            <li><%= link_to 'My Congress', congresses_user_path(current_user)%></li>
+            <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
+            <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
           <%end%>
           <% if can? :manage, User%>
-            <li><%= link_to 'Manage Users', users_path%></li>
+            <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
           <%end%>
         </ul>
         <div class='clear'></div>

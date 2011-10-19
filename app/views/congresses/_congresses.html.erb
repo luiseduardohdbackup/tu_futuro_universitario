@@ -1,3 +1,7 @@
+<% c =  congresses.first %>
+<div><h2><%= c.title %></h2></div>
+<div><%= c.description[0,100] %></div>
+<div class="clear" style="height:50px;"></div>
 <% for congress in congresses %>
   <div class='congress left'>
     <div class='right'><%= Cicero.word %></div>
