@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   def index
     @applications = Application.all
   end
@@ -38,5 +38,10 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @application.destroy
     redirect_to applications_url, :notice => "Successfully destroyed application."
+  end
+
+  def rate
+	@application = Application.find(params[:id])
+	@application.rate(params[:stars], current_user)
   end
 end

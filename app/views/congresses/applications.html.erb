@@ -9,7 +9,14 @@
 <div>
   <% @applications.each do |application|%>
     <div class='application'>
-      <%= link_to application.title, application%> | <%= application.user.email%>
+      <%= link_to application.title, application%> | <%= application.user.email%> 
+      <div class='right'>
+        <% if application.rates.size.zero? %>
+          Pendiente
+        <% else %>
+          <%= ratings_for application, :static, :small => true %>
+        <% end %>
+      </div>
       </div>
   <%end%>
 </div>
