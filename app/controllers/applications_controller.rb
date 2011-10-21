@@ -15,6 +15,7 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(params[:application])
     if @application.save
+      UserMailer.new_application(@application).deliver
       redirect_to @application, :notice => "Successfully created application."
     else
       render :action => 'new'
