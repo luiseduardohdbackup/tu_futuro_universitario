@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    Hola <%= @application.congress.user.name %>!<br/>
+    =================================================
+    <p>
+      Se ha recibido una nueva aplicación al congreso Veniam debitis rerum laboriosam!
+    </p>
+    <p>
+      Para ver la aplicación da click en el siguiente link: <a href="<%= @host %><%= application_path(@application) %>"><%= @host %><%= application_path(@application) %></a>
+    </p>
+    =================================================<br/>
+    Mensaje automaticamente generado, favor de no responder a este email.
+  </body>
+</html>

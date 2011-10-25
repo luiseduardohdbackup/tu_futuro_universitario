@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    Hola <%= @owner.name %>!<br/>
+    =================================================
+    <p>
+      Se ha recibido una forma de contacto la información es la siguiente:
+    </p>
+    <p>
+      <b>Nombre:</b> <%= @info['name'] %><br/>
+      <b>Email:</b> <%= @info['email'] %><br/>
+      <b>Teléfono:</b> <%= @info['phone'] %><br/>
+      <b>Dirección:</b> <%= @info['address'] %>
+    </p>
+    <p>
+      <b>Asunto:</b> <%= @info['subject'] %><br/>
+      <pre style="font-size:14px"><%= @info['comments'].html_safe %></pre>
+    <p>
+    =================================================<br/>
+    Mensaje automaticamente generado, favor de no responder a este email.
+  </body>
+</html>

@@ -4,54 +4,47 @@
     <title><%= content_for?(:title) ? yield(:title) : "Tu futuro universitario" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
-	<%= ajaxful_rating_style %>
+    <%= ajaxful_rating_style %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
     <div id="container">
-<<<<<<< HEAD
-      
+
       <div id="header">
         <%= image_tag "banner.png" %>
-=======
->>>>>>> 70d43d0c6fb366c2a25fe0c0c7801b2e3daf8614
-      <div id='session_menu'>
-        <% if current_user %>
+        <div id='session_menu'>
+          <% if current_user %>
+            <ul>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          <% else %>
+            <ul>
+              <li><%= link_to 'Register', new_user_registration_path%></li>
+              <li><%= link_to 'Sign in', new_user_session_path%></li>
+            </ul>
+          <% end %>
+        </div>
+        <div id='top_menu'>
           <ul>
-            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
+            <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
+            <% if can? :manage, School %>
+              <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
+            <%end%>
+            <% if can? :create, Congress%>
+              <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
+              <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
+            <%end%>
+            <% if can? :manage, User%>
+              <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
+            <%end%>
+            <li><%= link_to 'Nosotros', about_path, :class => set_if_current("about") %></li>
+            <li><%= link_to 'Contacto', contact_path, :class => set_if_current("contact") %></li>
           </ul>
-        <% else %>
-          <ul>
-            <li><%= link_to 'Register', new_user_registration_path%></li>
-            <li><%= link_to 'Sign in', new_user_session_path%></li>
-          </ul>
-        <% end %>
+          <div class='clear'></div>
+        </div>
       </div>
-      <div id='top_menu'>
-        <ul>
-<<<<<<< HEAD
-          <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
-          <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
-          <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
-=======
-          <li><%= link_to 'Home', congresses_path%></li>
-          <li><%= link_to 'Areas', areas_path%></li>
-	  <% if can? :manage, School %>
-            <li><%= link_to 'Schools', schools_path%></li>
-	  <%end%>
->>>>>>> 70d43d0c6fb366c2a25fe0c0c7801b2e3daf8614
-          <% if can? :create, Congress%>
-            <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
-            <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
-          <%end%>
-          <% if can? :manage, User%>
-            <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
-          <%end%>
-        </ul>
-        <div class='clear'></div>
-      </div>
-    </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
