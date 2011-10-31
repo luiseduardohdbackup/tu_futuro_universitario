@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :congresses
   has_many :applications, :dependent => :destroy
+  belongs_to :scholarships
 
   validates :name, :role, :presence => true
 

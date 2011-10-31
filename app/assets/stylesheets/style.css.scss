@@ -119,7 +119,14 @@ a {
     padding:5px;
   }
 }
-
+#questions{
+  h2{color:#4B7399;}
+  ul{ 
+    color: #333;
+    font-size:15px;
+    li{ padding:7px 0;}
+  }
+}
 .mini_time{
   margin:5px 0;
 //  background:#f90;

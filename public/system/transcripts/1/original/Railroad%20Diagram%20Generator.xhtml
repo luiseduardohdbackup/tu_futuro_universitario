@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><xhtml:meta xmlns:xhtml="http://www.w3.org/1999/xhtml" http-equiv="Content-Type" content="application/xhtml+xml" /><xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="shortcut icon" href="http://railroad.my28msec.com/favicon.ico" /><xhtml:title xmlns:xhtml="http://www.w3.org/1999/xhtml">Railroad Diagram Generator</xhtml:title><style type="text/css">
+    ::-moz-selection
+    {
+      color: #FFFCF0;
+      background: #4D3D00;
+    }
+    ::selection
+    {
+      color: #FFFCF0;
+      background: #4D3D00;
+    }      
+    body
+    {
+      font: normal 12px Verdana, sans-serif;
+      color: #4D3D00;
+      background: #FFFCF0;
+    }
+    a:link, a:visited
+    {
+      color: #4D3D00;
+    }
+    a.button, #tabs li a
+    {
+      padding: 0.25em 0.5em;
+      border: 1px solid #806600;
+      background: #F1E8C6;
+      color: #806600;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover, #tabs li a:hover
+    {
+      color: #000000;
+      background: #FFF4C7;
+      border-color: #000000;       
+    }     
+    #tabs
+    {
+      padding: 3px 10px;
+      margin-left: 0;
+      margin-top: 58px;
+      border-bottom: 1px solid #4D3D00;
+    }  
+    #tabs li
+    {
+      list-style: none;
+      margin-left: 5px;
+      display: inline;
+    }
+    #tabs li a
+    {     
+      border-bottom: 1px solid #4D3D00;
+    }
+    #tabs li a.active
+    {
+      color: #4D3D00;
+      background: #FFFCF0;
+      border-color: #4D3D00;
+      border-bottom: 1px solid #FFFCF0;
+      outline: none;
+    }
+    #divs div
+    {
+      display: none;
+      overflow:auto;
+    }
+    #divs div.active
+    {
+      display: block;
+    }
+    #text
+    {
+      border-color: #806600;
+      background: #FFFEFA;
+      color: #000000;
+    }
+    td.time
+    {
+      vertical-align: top;
+    }
+    span.time
+    {
+      font-size: 9px;
+      visibility: hidden;
+    }
+    td.time:hover span.time
+    {
+      visibility: visible;
+    }
+  </style><svg xmlns="http://www.w3.org/2000/svg"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs></svg></head><body onload="tab(VIEW)" onresize="resize()" onscroll="resize()"><div style="position:absolute; right:5px; top:0px;"><table border="0"><tr><td class="time"><span id="timeDisplay" class="time">response time<br />7.084 sec</span><script type="text/javascript">
+            var s = document.getElementById("timeDisplay");
+            s.innerHTML = "response time<br/>" + 
+            ((new Date().getTime() - 1316111575161) / 1000.0) + " sec";</script></td><td style="font-weight:bold; font-family:Arial Black, Sans-serif; line-height:130%;"><span style="font-size: 26px;">
+            Railroad
+          </span><br /><span style="font-size: 26px;">
+            Diagram
+          </span><br /><span style="font-size: 21px;">
+            Generator
+          </span></td><td><svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"><g transform="scale(0.777777777777777778)"><circle cx="45" cy="45" r="45" style="stroke:none; fill:#FFCC00" /><circle cx="45" cy="45" r="42" style="stroke:black; stroke-width:2px; fill:#FFCC00" /><line x1="15" y1="15" x2="75" y2="75" stroke="black" style="stroke-width:9px;" /><line x1="15" y1="75" x2="75" y2="15" stroke="black" style="stroke-width:9px;" /><text x="7" y="54" style="font-size:26px; font-family:Arial, Sans-serif; font-weight:bold">R</text><text x="64" y="54" style="font-size:26px; font-family:Arial, Sans-serif; font-weight:bold">R</text></g></svg></td><td style="text-align:right; font-size: 9px; font-family:Arial, Sans-serif; line-height:110%;"><span>
+            written by
+            <br />Gunther Rademacher
+            <br /><a href="mailto:grd@gmx.net">grd@gmx.net</a><br /><br /></span><a target="_blank" id="built_with_sausalito_button" href="http://www.28msec.com/"><img border="0" src="./Railroad Diagram Generator_files/button_28_sausalito.png" title="Built with Sausalito - 100% XQuery" alt="Built with Sausalito - 100% XQuery" /></a><br /><a target="_blank" id="hundred_percent_w3c_xquery_button" href="http://www.w3.org/XML/Query/"><img border="0" src="./Railroad Diagram Generator_files/button_w3c_xquery.png" title="100% W3C Compatible XQuery" alt="100% XQuery" /></a><br /></td></tr></table></div><form name="data" method="POST" enctype="multipart/form-data" onsubmit="return false;"><input type="hidden" name="task" id="task" /><input type="hidden" name="name" id="name" value="" /><input type="hidden" name="time" value="1316111575161" /><script type="text/javascript">var WELCOME = 0;</script><script type="text/javascript">var GET     = 1;</script><script type="text/javascript">var EDIT    = 2;</script><script type="text/javascript">var VIEW    = 3;</script><script type="text/javascript">var OPTIONS = 4;</script><script type="text/javascript">var ABOUT   = 5;</script><ul id="tabs"><li><a name="tab" href="javascript:tab(WELCOME)" class="">Welcome</a> </li><li><a name="tab" href="javascript:tab(GET)">Get Grammar</a> </li><li><a name="tab" href="javascript:tab(EDIT)" class="active">Edit Grammar</a> </li><li><a name="tab" href="javascript:tab(VIEW)" class="">View Diagram</a> </li><li><a name="tab" href="javascript:tab(OPTIONS)">Options</a> </li><li><a name="tab" href="javascript:tab(ABOUT)">About</a> </li></ul><div id="divs"><div name="div" style="height: 631px; " class=""><div style="display:block; max-width: 768px;"><p><b>Welcome to Railroad Diagram Generator!</b></p><p>
+      This is a tool for creating 
+      <a target="_blank" href="http://en.wikipedia.org/wiki/Syntax_diagram">syntax diagrams</a>,
+      also known as railroad diagrams, from 
+      <a target="_blank" href="http://en.wikipedia.org/wiki/Context-free_grammar">context-free grammars</a> 
+      specified in  
+      <a target="_blank" href="http://en.wikipedia.org/wiki/EBNF">EBNF</a>. Syntax diagrams have
+      been used for decades now, so the concept is well-known, and some tools for diagram generation are 
+      in existence. This one has a focus on web orientation, so its features are
+      <ul><li>usage of the <a target="_blank" href="http://www.w3.org/">W3C</a>'s EBNF notation,</li><li>web-scraping of grammars from W3C specifications,</li><li>online editing of grammars,</li><li>diagram presentation in <a target="_blank" href="http://www.w3.org/Graphics/SVG/">SVG</a>,</li><li>
+          and it was completely written in web languages 
+          (<a target="_blank" href="http://en.wikipedia.org/wiki/XQuery">XQuery</a>,
+          <a target="_blank" href="http://en.wikipedia.org/wiki/XHTML">XHTML</a>,
+          <a target="_blank" href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>,
+          <a target="_blank" href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>).
+        </li></ul>
+      Due to the use of SVG, a browser capable of handling inline SVG is required. However this applies
+      to most modern browsers.
+    </p><b>Notation</b><p>
+      For the original description of the EBNF notation as it is used here, please refer to  
+      "<a target="_blank" href="http://www.w3.org/TR/xquery/#EBNFNotation">A.1.1 Notation</a>"
+      in the <a target="_blank" href="http://www.w3.org/TR/xquery">XQuery recommendation</a>. The
+      <a target="_blank" href="http://www.w3.org/TR/xml/">XML recommendation</a> contains a 
+      similar section, "<a target="_blank" href="http://www.w3.org/TR/xml/#sec-notation">6 Notation</a>".
+      Below is a self-describing grammar for the EBNF notation. 
+    </p><p style="margin-left:20px;"><table border="0"><tr><td><code><a name="_Grammar">Grammar</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_Production">Production</a>*</code></td><td /></tr><tr><td><code><a name="_Production">Production</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_NCName">NCName</a> '::=' ( <a href="http://railroad.my28msec.com/rr/ui#_Choice">Choice</a> | <a href="http://railroad.my28msec.com/rr/ui#_Link">Link</a> )</code></td><td /></tr><tr><td><code><a name="_NCName">NCName</a></code></td><td><code>::=</code></td><td><code>[<a target="_blank" href="http://www.w3.org/TR/xml-names/#NT-NCName">http://www.w3.org/TR/xml-names/#NT-NCName</a>]</code></td><td /></tr><tr><td><code><a name="_Choice">Choice</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_SequenceOrDifference">SequenceOrDifference</a> ( '|' <a href="http://railroad.my28msec.com/rr/ui#_SequenceOrDifference">SequenceOrDifference</a> )*</code></td><td /></tr><tr><td><code><a name="_SequenceOrDifference">SequenceOrDifference</a></code></td><td><code>::=</code></td><td><code>(<a href="http://railroad.my28msec.com/rr/ui#_Item">Item</a> ( '-' <a href="http://railroad.my28msec.com/rr/ui#_Item">Item</a> | <a href="http://railroad.my28msec.com/rr/ui#_Item">Item</a>* ))?</code></td><td /></tr><tr><td><code><a name="_Item">Item</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_Primary">Primary</a> ( '?' | '*' | '+' )?</code></td><td /></tr><tr><td><code><a name="_Primary">Primary</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_NCName">NCName</a> | <a href="http://railroad.my28msec.com/rr/ui#_StringLiteral">StringLiteral</a> | <a href="http://railroad.my28msec.com/rr/ui#_CharCode">CharCode</a> | <a href="http://railroad.my28msec.com/rr/ui#_CharClass">CharClass</a> | '(' <a href="http://railroad.my28msec.com/rr/ui#_Choice">Choice</a> ')'</code></td><td /></tr><tr><td><code><a name="_StringLiteral">StringLiteral</a></code></td><td><code>::=</code></td><td><code>'"' [^"]* '"' | "'" [^']* "'"</code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_CharCode">CharCode</a></code></td><td><code>::=</code></td><td><code>'#x' [0-9a-fA-F]+</code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_CharClass">CharClass</a></code></td><td><code>::=</code></td><td><code>'[' '^'? ( <a href="http://railroad.my28msec.com/rr/ui#_Char">Char</a> | <a href="http://railroad.my28msec.com/rr/ui#_CharCode">CharCode</a> | <a href="http://railroad.my28msec.com/rr/ui#_CharRange">CharRange</a> | <a href="http://railroad.my28msec.com/rr/ui#_CharCodeRange">CharCodeRange</a> )+ ']'</code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_Char">Char</a></code></td><td><code>::=</code></td><td><code>[<a target="_blank" href="http://www.w3.org/TR/xml#NT-Char">http://www.w3.org/TR/xml#NT-Char</a>]</code></td><td /></tr><tr><td><code><a name="_CharRange">CharRange</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_Char">Char</a> '-' ( <a href="http://railroad.my28msec.com/rr/ui#_Char">Char</a> - ']' )</code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_CharCodeRange">CharCodeRange</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_CharCode">CharCode</a> '-' <a href="http://railroad.my28msec.com/rr/ui#_CharCode">CharCode</a></code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_Link">Link</a></code></td><td><code>::=</code></td><td><code>'[' <a href="http://railroad.my28msec.com/rr/ui#_URL">URL</a> ']'</code></td><td /></tr><tr><td><code><a name="_URL">URL</a></code></td><td><code>::=</code></td><td><code>[^#x5D:/?#]+ '://' [^#x5D#]+ ('#' <a href="http://railroad.my28msec.com/rr/ui#_NCName">NCName</a>)?</code></td><td>/* ws: explicit */</td></tr><tr><td><code><a name="_Whitespace">Whitespace</a></code></td><td><code>::=</code></td><td><code><a href="http://railroad.my28msec.com/rr/ui#_S">S</a> | <a href="http://railroad.my28msec.com/rr/ui#_Comment">Comment</a></code></td><td /></tr><tr><td><code><a name="_S">S</a></code></td><td><code>::=</code></td><td><code>#x9 | #xA | #xD | #x20</code></td><td /></tr><tr><td><code><a name="_Comment">Comment</a></code></td><td><code>::=</code></td><td><code>'/*' ( [^*] | '*'+ [^*/] )* '*'* '*/'</code></td><td>/* ws: explicit */</td></tr></table></p><p>
+      For viewing railroad diagrams of this very grammar, you could either
+      <ul><li>select "EBNF Notation" from the "Get Grammar" tab, or</li><li>copy and paste the above grammar to the "Edit Grammar" tab</li></ul>
+      and then proceed to the "View Diagram" tab. Or just click 
+      <a href="javascript:selfDescribe()">here</a> for a shortcut.
+    </p></div></div><div name="div" style="height: 631px; "><table border="0"><tr colspan="3" /><tr><td colspan="3" align="center"><p><b>From this website:</b></p></td></tr><tr><td align="right">EBNF Notation</td><td><input id="myUri1" type="radio" name="spec" onclick="setUri(this.value)" value="http://railroad.my28msec.com/rr/ui" /></td><td><span id="myUri2">http://railroad.my28msec.com/rr/ui</span><script type="text/javascript">
+                      document.getElementById("myUri1").value = document.location.href;
+                      document.getElementById("myUri2").innerHTML = document.location.href;
+                    </script></td></tr><tr><td colspan="3" align="center"><p><b>From W3C specifications:</b></p></td></tr><tr><td align="right">Extensible Markup Language (XML) 1.0</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xml/" /></td><td>http://www.w3.org/TR/xml/</td></tr><tr><td align="right">Namespaces in XML 1.0</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xml-names/" /></td><td>http://www.w3.org/TR/xml-names/</td></tr><tr><td align="right">XML Path Language (XPath) 2.0</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xpath20/" /></td><td>http://www.w3.org/TR/xpath20/</td></tr><tr><td align="right">XQuery 1.0: An XML Query Language</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xquery/" /></td><td>http://www.w3.org/TR/xquery/</td></tr><tr><td align="right">XQuery Update Facility 1.0</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xquery-update-10/" /></td><td>http://www.w3.org/TR/xquery-update-10/</td></tr><tr><td align="right">XQuery Scripting Extension 1.0</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xquery-sx-10/" /></td><td>http://www.w3.org/TR/xquery-sx-10/</td></tr><tr><td align="right">XQuery 3.0: An XML Query Language</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/xquery-30/" /></td><td>http://www.w3.org/TR/xquery-30/</td></tr><tr><td align="right">SPARQL Query Language for RDF</td><td><input type="radio" name="spec" onclick="setUri(this.value)" value="http://www.w3.org/TR/rdf-sparql-query/" /></td><td>http://www.w3.org/TR/rdf-sparql-query/</td></tr><tr><td align="right">other</td><td><input id="other" type="radio" name="spec" onclick="setUri(this.value)" value="" checked="" /></td><td><small>enter URI below</small></td></tr><tr><td colspan="3" align="center"> </td></tr><tr><td align="right">URI</td><td> </td><td><input type="text" id="uri" name="uri" size="45" onclick="other.checked = true;" /></td></tr></table></div><div name="div" style="overflow-x: hidden; overflow-y: hidden; height: 540px; " class="active"><textarea id="text" name="text" onchange="changeText();" style="width: 100%; height: 495px; " spellcheck="false">Tlaloc ::= "module" "id" ":" (Var)* HTML "end"
+
+HTML ::= "head" ":" (Funcion)* "end" "body" ":" (Funcion)* "end"
+
+Tipo ::= ("int" | "string" | "boolean")
+
+Funcion ::= "def" "id" ":" (Estatuto | Var | Elemento)+
+
+Var ::= Tipo "id" "=" Valor ";"
+
+Valor ::= ("id" | "cte_i" | "boolean")
+
+Elemento ::= ("HTML" | "head")
+
+</textarea><input id="textChanged" name="textChanged" type="hidden" value="true" /><table><tr><td><a class="button" href="javascript:clear()[0]">Clear</a>
+                     
+                    <a class="button" href="javascript:save()[0]">Save</a></td><td style="width: 60px;"> </td><td><input type="file" size="42" id="file" name="file" />
+                     
+                    <a class="button" href="javascript:load()">Load</a></td></tr></table></div><div name="div" style="overflow-x: auto; overflow-y: auto; height: 631px; " class=""><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Tlaloc">Tlaloc:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="498" height="68"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 33 1 29 1 37" class="filled" /><polygon points="17 33 9 29 9 37" class="filled" /><line x1="17" y1="33" x2="19" y2="33" class="line" /><rect x="31" y="19" width="68" height="32" rx="10" /><rect x="29" y="17" width="68" height="32" class="terminal" rx="10" /><text class="terminal" x="39" y="37">module</text><line x1="19" y1="33" x2="29" y2="33" class="line" /><line x1="97" y1="33" x2="107" y2="33" class="line" /><rect x="119" y="19" width="32" height="32" rx="10" /><rect x="117" y="17" width="32" height="32" class="terminal" rx="10" /><text class="terminal" x="127" y="37">id</text><line x1="107" y1="33" x2="117" y2="33" class="line" /><line x1="149" y1="33" x2="159" y2="33" class="line" /><rect x="171" y="19" width="24" height="32" rx="10" /><rect x="169" y="17" width="24" height="32" class="terminal" rx="10" /><text class="terminal" x="179" y="37">:</text><line x1="159" y1="33" x2="169" y2="33" class="line" /><line x1="193" y1="33" x2="203" y2="33" class="line" /><a xlink:href="#Var" xlink:title="Var"><rect x="255" y="19" width="40" height="32" /><rect x="253" y="17" width="40" height="32" class="nonterminal" /><text class="nonterminal" x="263" y="37">Var</text></a><line x1="243" y1="33" x2="253" y2="33" class="line" /><line x1="293" y1="33" x2="303" y2="33" class="line" /><path d="M223 33 L243 33 M242 33 Q233 33 233 23 L233 11 Q233 1 243 1" class="line" /><path d="M303 33 L323 33 M303 33 Q313 33 313 23 L313 11 Q313 1 303 1" class="line" /><line x1="243" y1="1" x2="253" y2="1" class="line" /><line x1="253" y1="1" x2="303" y2="1" class="line" /><line x1="203" y1="33" x2="223" y2="33" class="line" /><line x1="323" y1="33" x2="343" y2="33" class="line" /><path d="M203 33 Q213 33 213 43" class="line" /><path d="M333 43 Q333 33 343 33" class="line" /><line x1="213" y1="43" x2="213" y2="57" class="line" /><line x1="333" y1="57" x2="333" y2="43" class="line" /><path d="M213 57 Q213 67 223 67" class="line" /><path d="M323 67 Q333 67 333 57" class="line" /><line x1="223" y1="67" x2="233" y2="67" class="line" /><line x1="233" y1="67" x2="323" y2="67" class="line" /><a xlink:href="#HTML" xlink:title="HTML"><rect x="355" y="19" width="52" height="32" /><rect x="353" y="17" width="52" height="32" class="nonterminal" /><text class="nonterminal" x="363" y="37">HTML</text></a><line x1="343" y1="33" x2="353" y2="33" class="line" /><line x1="405" y1="33" x2="415" y2="33" class="line" /><rect x="427" y="19" width="44" height="32" rx="10" /><rect x="425" y="17" width="44" height="32" class="terminal" rx="10" /><text class="terminal" x="435" y="37">end</text><line x1="415" y1="33" x2="425" y2="33" class="line" /><line x1="469" y1="33" x2="479" y2="33" class="line" /><line x1="482" y1="33" x2="479" y2="33" class="line" /><polygon points="489 33 497 29 497 37" class="filled" /><polygon points="489 33 481 29 481 37" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">no references</xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="HTML">HTML:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="734" height="68"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 33 1 29 1 37" class="filled" /><polygon points="17 33 9 29 9 37" class="filled" /><line x1="17" y1="33" x2="19" y2="33" class="line" /><rect x="31" y="19" width="52" height="32" rx="10" /><rect x="29" y="17" width="52" height="32" class="terminal" rx="10" /><text class="terminal" x="39" y="37">head</text><line x1="19" y1="33" x2="29" y2="33" class="line" /><line x1="81" y1="33" x2="91" y2="33" class="line" /><rect x="103" y="19" width="24" height="32" rx="10" /><rect x="101" y="17" width="24" height="32" class="terminal" rx="10" /><text class="terminal" x="111" y="37">:</text><line x1="91" y1="33" x2="101" y2="33" class="line" /><line x1="125" y1="33" x2="135" y2="33" class="line" /><a xlink:href="#Funcion" xlink:title="Funcion"><rect x="187" y="19" width="68" height="32" /><rect x="185" y="17" width="68" height="32" class="nonterminal" /><text class="nonterminal" x="195" y="37">Funcion</text></a><line x1="175" y1="33" x2="185" y2="33" class="line" /><line x1="253" y1="33" x2="263" y2="33" class="line" /><path d="M155 33 L175 33 M174 33 Q165 33 165 23 L165 11 Q165 1 175 1" class="line" /><path d="M263 33 L283 33 M263 33 Q273 33 273 23 L273 11 Q273 1 263 1" class="line" /><line x1="175" y1="1" x2="185" y2="1" class="line" /><line x1="185" y1="1" x2="263" y2="1" class="line" /><line x1="135" y1="33" x2="155" y2="33" class="line" /><line x1="283" y1="33" x2="303" y2="33" class="line" /><path d="M135 33 Q145 33 145 43" class="line" /><path d="M293 43 Q293 33 303 33" class="line" /><line x1="145" y1="43" x2="145" y2="57" class="line" /><line x1="293" y1="57" x2="293" y2="43" class="line" /><path d="M145 57 Q145 67 155 67" class="line" /><path d="M283 67 Q293 67 293 57" class="line" /><line x1="155" y1="67" x2="165" y2="67" class="line" /><line x1="165" y1="67" x2="283" y2="67" class="line" /><rect x="315" y="19" width="44" height="32" rx="10" /><rect x="313" y="17" width="44" height="32" class="terminal" rx="10" /><text class="terminal" x="323" y="37">end</text><line x1="303" y1="33" x2="313" y2="33" class="line" /><line x1="357" y1="33" x2="367" y2="33" class="line" /><rect x="379" y="19" width="52" height="32" rx="10" /><rect x="377" y="17" width="52" height="32" class="terminal" rx="10" /><text class="terminal" x="387" y="37">body</text><line x1="367" y1="33" x2="377" y2="33" class="line" /><line x1="429" y1="33" x2="439" y2="33" class="line" /><rect x="451" y="19" width="24" height="32" rx="10" /><rect x="449" y="17" width="24" height="32" class="terminal" rx="10" /><text class="terminal" x="459" y="37">:</text><line x1="439" y1="33" x2="449" y2="33" class="line" /><line x1="473" y1="33" x2="483" y2="33" class="line" /><a xlink:href="#Funcion" xlink:title="Funcion"><rect x="535" y="19" width="68" height="32" /><rect x="533" y="17" width="68" height="32" class="nonterminal" /><text class="nonterminal" x="543" y="37">Funcion</text></a><line x1="523" y1="33" x2="533" y2="33" class="line" /><line x1="601" y1="33" x2="611" y2="33" class="line" /><path d="M503 33 L523 33 M522 33 Q513 33 513 23 L513 11 Q513 1 523 1" class="line" /><path d="M611 33 L631 33 M611 33 Q621 33 621 23 L621 11 Q621 1 611 1" class="line" /><line x1="523" y1="1" x2="533" y2="1" class="line" /><line x1="533" y1="1" x2="611" y2="1" class="line" /><line x1="483" y1="33" x2="503" y2="33" class="line" /><line x1="631" y1="33" x2="651" y2="33" class="line" /><path d="M483 33 Q493 33 493 43" class="line" /><path d="M641 43 Q641 33 651 33" class="line" /><line x1="493" y1="43" x2="493" y2="57" class="line" /><line x1="641" y1="57" x2="641" y2="43" class="line" /><path d="M493 57 Q493 67 503 67" class="line" /><path d="M631 67 Q641 67 641 57" class="line" /><line x1="503" y1="67" x2="513" y2="67" class="line" /><line x1="513" y1="67" x2="631" y2="67" class="line" /><rect x="663" y="19" width="44" height="32" rx="10" /><rect x="661" y="17" width="44" height="32" class="terminal" rx="10" /><text class="terminal" x="671" y="37">end</text><line x1="651" y1="33" x2="661" y2="33" class="line" /><line x1="705" y1="33" x2="715" y2="33" class="line" /><line x1="718" y1="33" x2="715" y2="33" class="line" /><polygon points="725 33 733 29 733 37" class="filled" /><polygon points="725 33 717 29 717 37" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Tlaloc" title="Tlaloc">Tlaloc</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Tipo">Tipo:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="170" height="124"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 17 1 13 1 21" class="filled" /><polygon points="17 17 9 13 9 21" class="filled" /><line x1="17" y1="17" x2="19" y2="17" class="line" /><rect x="51" y="3" width="36" height="32" rx="10" /><rect x="49" y="1" width="36" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="21">int</text><line x1="39" y1="17" x2="49" y2="17" class="line" /><line x1="85" y1="17" x2="95" y2="17" class="line" /><line x1="95" y1="17" x2="131" y2="17" class="line" /><line x1="19" y1="17" x2="39" y2="17" class="line" /><line x1="131" y1="17" x2="151" y2="17" class="line" /><path d="M19 17 Q29 17 29 27" class="line" /><path d="M141 27 Q141 17 151 17" class="line" /><line x1="29" y1="27" x2="29" y2="51" class="line" /><line x1="141" y1="51" x2="141" y2="27" class="line" /><path d="M29 51 Q29 61 39 61" class="line" /><path d="M131 61 Q141 61 141 51" class="line" /><rect x="51" y="47" width="58" height="32" rx="10" /><rect x="49" y="45" width="58" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="65">string</text><line x1="39" y1="61" x2="49" y2="61" class="line" /><line x1="107" y1="61" x2="117" y2="61" class="line" /><line x1="117" y1="61" x2="131" y2="61" class="line" /><line x1="29" y1="51" x2="29" y2="71" class="line" /><line x1="141" y1="71" x2="141" y2="51" class="line" /><line x1="29" y1="71" x2="29" y2="95" class="line" /><line x1="141" y1="95" x2="141" y2="71" class="line" /><path d="M29 95 Q29 105 39 105" class="line" /><path d="M131 105 Q141 105 141 95" class="line" /><rect x="51" y="91" width="72" height="32" rx="10" /><rect x="49" y="89" width="72" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="109">boolean</text><line x1="39" y1="105" x2="49" y2="105" class="line" /><line x1="121" y1="105" x2="131" y2="105" class="line" /><line x1="154" y1="17" x2="151" y2="17" class="line" /><polygon points="161 17 169 13 169 21" class="filled" /><polygon points="161 17 153 13 153 21" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Var" title="Var">Var</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Funcion">Funcion:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="372" height="140"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 33 1 29 1 37" class="filled" /><polygon points="17 33 9 29 9 37" class="filled" /><line x1="17" y1="33" x2="19" y2="33" class="line" /><rect x="31" y="19" width="40" height="32" rx="10" /><rect x="29" y="17" width="40" height="32" class="terminal" rx="10" /><text class="terminal" x="39" y="37">def</text><line x1="19" y1="33" x2="29" y2="33" class="line" /><line x1="69" y1="33" x2="79" y2="33" class="line" /><rect x="91" y="19" width="32" height="32" rx="10" /><rect x="89" y="17" width="32" height="32" class="terminal" rx="10" /><text class="terminal" x="99" y="37">id</text><line x1="79" y1="33" x2="89" y2="33" class="line" /><line x1="121" y1="33" x2="131" y2="33" class="line" /><rect x="143" y="19" width="24" height="32" rx="10" /><rect x="141" y="17" width="24" height="32" class="terminal" rx="10" /><text class="terminal" x="151" y="37">:</text><line x1="131" y1="33" x2="141" y2="33" class="line" /><line x1="165" y1="33" x2="175" y2="33" class="line" /><a xlink:href="#Estatuto" xlink:title="Estatuto"><rect x="227" y="19" width="74" height="32" /><rect x="225" y="17" width="74" height="32" class="nonterminal" /><text class="nonterminal" x="235" y="37">Estatuto</text></a><line x1="215" y1="33" x2="225" y2="33" class="line" /><line x1="299" y1="33" x2="309" y2="33" class="line" /><line x1="309" y1="33" x2="313" y2="33" class="line" /><line x1="195" y1="33" x2="215" y2="33" class="line" /><line x1="313" y1="33" x2="333" y2="33" class="line" /><path d="M195 33 Q205 33 205 43" class="line" /><path d="M323 43 Q323 33 333 33" class="line" /><line x1="205" y1="43" x2="205" y2="67" class="line" /><line x1="323" y1="67" x2="323" y2="43" class="line" /><path d="M205 67 Q205 77 215 77" class="line" /><path d="M313 77 Q323 77 323 67" class="line" /><a xlink:href="#Var" xlink:title="Var"><rect x="227" y="63" width="40" height="32" /><rect x="225" y="61" width="40" height="32" class="nonterminal" /><text class="nonterminal" x="235" y="81">Var</text></a><line x1="215" y1="77" x2="225" y2="77" class="line" /><line x1="265" y1="77" x2="275" y2="77" class="line" /><line x1="275" y1="77" x2="313" y2="77" class="line" /><line x1="205" y1="67" x2="205" y2="87" class="line" /><line x1="323" y1="87" x2="323" y2="67" class="line" /><line x1="205" y1="87" x2="205" y2="111" class="line" /><line x1="323" y1="111" x2="323" y2="87" class="line" /><path d="M205 111 Q205 121 215 121" class="line" /><path d="M313 121 Q323 121 323 111" class="line" /><a xlink:href="#Elemento" xlink:title="Elemento"><rect x="227" y="107" width="78" height="32" /><rect x="225" y="105" width="78" height="32" class="nonterminal" /><text class="nonterminal" x="235" y="125">Elemento</text></a><line x1="215" y1="121" x2="225" y2="121" class="line" /><line x1="303" y1="121" x2="313" y2="121" class="line" /><path d="M175 33 L195 33 M194 33 Q185 33 185 23 L185 11 Q185 1 195 1" class="line" /><path d="M333 33 L353 33 M333 33 Q343 33 343 23 L343 11 Q343 1 333 1" class="line" /><line x1="195" y1="1" x2="205" y2="1" class="line" /><line x1="205" y1="1" x2="333" y2="1" class="line" /><line x1="356" y1="33" x2="353" y2="33" class="line" /><polygon points="363 33 371 29 371 37" class="filled" /><polygon points="363 33 355 29 355 37" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#HTML" title="HTML">HTML</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Var">Var:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="322" height="36"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 17 1 13 1 21" class="filled" /><polygon points="17 17 9 13 9 21" class="filled" /><line x1="17" y1="17" x2="19" y2="17" class="line" /><a xlink:href="#Tipo" xlink:title="Tipo"><rect x="31" y="3" width="46" height="32" /><rect x="29" y="1" width="46" height="32" class="nonterminal" /><text class="nonterminal" x="39" y="21">Tipo</text></a><line x1="19" y1="17" x2="29" y2="17" class="line" /><line x1="75" y1="17" x2="85" y2="17" class="line" /><rect x="97" y="3" width="32" height="32" rx="10" /><rect x="95" y="1" width="32" height="32" class="terminal" rx="10" /><text class="terminal" x="105" y="21">id</text><line x1="85" y1="17" x2="95" y2="17" class="line" /><line x1="127" y1="17" x2="137" y2="17" class="line" /><rect x="149" y="3" width="30" height="32" rx="10" /><rect x="147" y="1" width="30" height="32" class="terminal" rx="10" /><text class="terminal" x="157" y="21">=</text><line x1="137" y1="17" x2="147" y2="17" class="line" /><line x1="177" y1="17" x2="187" y2="17" class="line" /><a xlink:href="#Valor" xlink:title="Valor"><rect x="199" y="3" width="52" height="32" /><rect x="197" y="1" width="52" height="32" class="nonterminal" /><text class="nonterminal" x="207" y="21">Valor</text></a><line x1="187" y1="17" x2="197" y2="17" class="line" /><line x1="249" y1="17" x2="259" y2="17" class="line" /><rect x="271" y="3" width="24" height="32" rx="10" /><rect x="269" y="1" width="24" height="32" class="terminal" rx="10" /><text class="terminal" x="279" y="21">;</text><line x1="259" y1="17" x2="269" y2="17" class="line" /><line x1="293" y1="17" x2="303" y2="17" class="line" /><line x1="306" y1="17" x2="303" y2="17" class="line" /><polygon points="313 17 321 13 321 21" class="filled" /><polygon points="313 17 305 13 305 21" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Funcion" title="Funcion">Funcion</xhtml:a></xhtml:li><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Tlaloc" title="Tlaloc">Tlaloc</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Valor">Valor:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="170" height="124"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 17 1 13 1 21" class="filled" /><polygon points="17 17 9 13 9 21" class="filled" /><line x1="17" y1="17" x2="19" y2="17" class="line" /><rect x="51" y="3" width="32" height="32" rx="10" /><rect x="49" y="1" width="32" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="21">id</text><line x1="39" y1="17" x2="49" y2="17" class="line" /><line x1="81" y1="17" x2="91" y2="17" class="line" /><line x1="91" y1="17" x2="131" y2="17" class="line" /><line x1="19" y1="17" x2="39" y2="17" class="line" /><line x1="131" y1="17" x2="151" y2="17" class="line" /><path d="M19 17 Q29 17 29 27" class="line" /><path d="M141 27 Q141 17 151 17" class="line" /><line x1="29" y1="27" x2="29" y2="51" class="line" /><line x1="141" y1="51" x2="141" y2="27" class="line" /><path d="M29 51 Q29 61 39 61" class="line" /><path d="M131 61 Q141 61 141 51" class="line" /><rect x="51" y="47" width="52" height="32" rx="10" /><rect x="49" y="45" width="52" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="65">cte_i</text><line x1="39" y1="61" x2="49" y2="61" class="line" /><line x1="101" y1="61" x2="111" y2="61" class="line" /><line x1="111" y1="61" x2="131" y2="61" class="line" /><line x1="29" y1="51" x2="29" y2="71" class="line" /><line x1="141" y1="71" x2="141" y2="51" class="line" /><line x1="29" y1="71" x2="29" y2="95" class="line" /><line x1="141" y1="95" x2="141" y2="71" class="line" /><path d="M29 95 Q29 105 39 105" class="line" /><path d="M131 105 Q141 105 141 95" class="line" /><rect x="51" y="91" width="72" height="32" rx="10" /><rect x="49" y="89" width="72" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="109">boolean</text><line x1="39" y1="105" x2="49" y2="105" class="line" /><line x1="121" y1="105" x2="131" y2="105" class="line" /><line x1="154" y1="17" x2="151" y2="17" class="line" /><polygon points="161 17 169 13 169 21" class="filled" /><polygon points="161 17 153 13 153 21" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Var" title="Var">Var</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="Elemento">Elemento:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="154" height="80"><defs><style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900;}
+    filled                {fill: #332900; stroke: none;}
+    text                  {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                          }
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #4D3D00;
+                            font-weight: bold;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFCC00; stroke: #332900;}
+    rect.nonterminal      {fill: #FFEB99; stroke: #332900;}    
+    polygon.regexp        {fill: #FFF5CC; stroke: #332900;}
+  </style></defs><polygon points="9 17 1 13 1 21" class="filled" /><polygon points="17 17 9 13 9 21" class="filled" /><line x1="17" y1="17" x2="19" y2="17" class="line" /><rect x="51" y="3" width="56" height="32" rx="10" /><rect x="49" y="1" width="56" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="21">HTML</text><line x1="39" y1="17" x2="49" y2="17" class="line" /><line x1="105" y1="17" x2="115" y2="17" class="line" /><line x1="19" y1="17" x2="39" y2="17" class="line" /><line x1="115" y1="17" x2="135" y2="17" class="line" /><path d="M19 17 Q29 17 29 27" class="line" /><path d="M125 27 Q125 17 135 17" class="line" /><line x1="29" y1="27" x2="29" y2="51" class="line" /><line x1="125" y1="51" x2="125" y2="27" class="line" /><path d="M29 51 Q29 61 39 61" class="line" /><path d="M115 61 Q125 61 125 51" class="line" /><rect x="51" y="47" width="52" height="32" rx="10" /><rect x="49" y="45" width="52" height="32" class="terminal" rx="10" /><text class="terminal" x="59" y="65">head</text><line x1="39" y1="61" x2="49" y2="61" class="line" /><line x1="101" y1="61" x2="111" y2="61" class="line" /><line x1="111" y1="61" x2="115" y2="61" class="line" /><line x1="138" y1="17" x2="135" y2="17" class="line" /><polygon points="145 17 153 13 153 21" class="filled" /><polygon points="145 17 137 13 137 21" class="filled" /></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">referenced by:<xhtml:ul><xhtml:li><xhtml:a href="http://railroad.my28msec.com/rr/ui#Funcion" title="Funcion">Funcion</xhtml:a></xhtml:li></xhtml:ul></xhtml:p><xhtml:br xmlns:xhtml="http://www.w3.org/1999/xhtml" /></div><div name="div" id="options" style="max-width: 600px; height: 631px; "><p>The following options may affect the application's performance.</p><table><tr><td><input type="checkbox" name="options" value="external" onclick="changeText();" checked="true" /></td><td><b>Use external parser</b></td></tr><tr><td> </td><td>
+                        When checked, parsing will be delegated to an external, Java coded
+                        parser servlet. Otherwise the built-in, XQuery-coded parser will be
+                        used. Turning on this option may provide a performance advantage, as
+                        the XQuery-coded parser suffers from some Zorba performance problems.
+                        It may become obsolete with future Zorba versions providing more 
+                        optimizations. See
+                        <a target="_blank" href="http://sourceforge.net/mailarchive/forum.php?thread_name=E1B27552-0D44-49CB-BFD8-6DDF2296BB93%40mac.com&forum_name=zorba-users">this post</a>
+                        on the Zorba-users mailing list.
+                      </td></tr><tr><td colspan="2"> </td></tr><tr><td><input type="checkbox" name="options" value="precomputed" onclick="changeText();" checked="true" /></td><td><b>Show precomputed SVG for standard grammars</b></td></tr><tr><td> </td><td>
+                        When this option is used, the server will return precomputed
+                        SVG syntax diagrams for the standard URIs shown on the "Get Grammar"
+                        tab. When unchecked, syntax diagrams will always be computed on the
+                        fly. This was also introduced for performance reasons, in order
+                        to faster present standard graphics. The option may become
+                        unnecessary with future Zorba versions, providing more optimizations.
+                        Note that precomputed SVG will be returned in the server request
+                        upon leaving the "Get Grammar" tab for "Edit" or "View". In all other 
+                        cases, SVG will be recomputed anyway, where necessary.
+                      </td></tr></table><p>
+                For seeing response times of server requests doing web scraping or
+                SVG rendering, hover your mouse slightly left of the bold "Railroad"
+                at the top right of this page.
+              </p></div><div name="div" id="about" style="overflow-x: hidden; overflow-y: hidden; height: 631px; "><iframe frameborder="0" id="frameset" width="100%" height="100%" /></div></div></form><div id="greyout" style="display:none" onclick="this.style.display = &apos;none&apos;" /><svg xmlns="http://www.w3.org/2000/svg" id="spinner" width="100" height="100" style="display:none"><path id="sector" d="M 52.137349980901462,1.0466371424889687                       A 49,49 0 0 1 56.395783418782528,1.4192017926832889                      L 52.558313367513009,30.567680717073316                       A 19.6,19.6 0 0 0 50.854939992360585,30.418654856995587                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 60.605541082967044,2.1614956511232677                       A 49,49 0 0 1 64.734584175709386,3.2678694133368822                      L 55.893833670283755,31.307147765334751                       A 19.6,19.6 0 0 0 54.242216433186819,30.864598260449306                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 68.7514881858894,4.7299029069469469                       A 49,49 0 0 1 72.625682048516666,6.5364691742671326                      L 59.050272819406665,32.61458766970685                       A 19.6,19.6 0 0 0 57.50059527435576,31.891961162778777                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 76.327680808994373,8.6738191551686015                       A 49,49 0 0 1 79.829310021427318,11.125686325729475                      L 61.931724008570924,34.450274530291793                       A 19.6,19.6 0 0 0 60.531072323597748,33.469527662067435                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 83.103920173167353,13.873410496303919                       A 49,49 0 0 1 86.126589503696081,16.896079826832647                      L 64.450635801478427,36.75843193073306                       A 19.6,19.6 0 0 0 63.24156806926694,35.549364198521566                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 88.874313674270525,20.170689978572689                       A 49,49 0 0 1 91.326180844831399,23.672319191005631                      L 66.530472337932565,39.468927676402252                       A 19.6,19.6 0 0 0 65.549725469708207,38.068275991429076                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 93.46353082573286,27.374317951483331                       A 49,49 0 0 1 95.270097093053053,31.248511814110596                      L 68.108038837221216,42.49940472564424                       A 19.6,19.6 0 0 0 67.38541233029315,40.949727180593328                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 96.732130586663118,35.265415824290621                       A 49,49 0 0 1 97.838504348876739,39.394458917032956                      L 69.135401739550701,45.757783566813181                       A 19.6,19.6 0 0 0 68.692852234665253,44.106166329716245                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 98.580798207316718,43.604216581217464                       A 49,49 0 0 1 98.953362857511024,47.862650019098538                      L 69.581345143004413,49.145060007639415                       A 19.6,19.6 0 0 0 69.432319282926684,47.441686632486984                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 98.953362857511024,52.137349980901462                       A 49,49 0 0 1 98.580798207316718,56.395783418782514                      L 69.432319282926684,52.558313367513009                       A 19.6,19.6 0 0 0 69.581345143004413,50.854939992360585                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 97.838504348876739,60.605541082967036                       A 49,49 0 0 1 96.732130586663118,64.734584175709372                      L 68.692852234665253,55.893833670283747                       A 19.6,19.6 0 0 0 69.135401739550701,54.242216433186812                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 95.270097093053053,68.7514881858894                       A 49,49 0 0 1 93.463530825732875,72.625682048516651                      L 67.38541233029315,59.050272819406658                       A 19.6,19.6 0 0 0 68.108038837221216,57.50059527435576                      Z" style="fill: #F7F0D4; stroke: none;" /><path id="sector" d="M 91.326180844831384,76.327680808994373                       A 49,49 0 0 1 88.874313674270525,79.829310021427318                      L 65.549725469708207,61.931724008570924                       A 19.6,19.6 0 0 0 66.530472337932565,60.531072323597755                      Z" style="fill: #F5ECC7; stroke: none;" /><path id="sector" d="M 86.126589503696081,83.103920173167353                       A 49,49 0 0 1 83.103920173167353,86.126589503696067                      L 63.241568069266947,64.450635801478427                       A 19.6,19.6 0 0 0 64.450635801478427,63.24156806926694                      Z" style="fill: #F3E8BA; stroke: none;" /><path id="sector" d="M 79.829310021427318,88.874313674270525                       A 49,49 0 0 1 76.327680808994387,91.326180844831384                      L 60.531072323597755,66.530472337932565                       A 19.6,19.6 0 0 0 61.931724008570932,65.549725469708207                      Z" style="fill: #F1E3AE; stroke: none;" /><path id="sector" d="M 72.625682048516666,93.463530825732875                       A 49,49 0 0 1 68.7514881858894,95.270097093053053                      L 57.50059527435576,68.108038837221216                       A 19.6,19.6 0 0 0 59.050272819406665,67.38541233029315                      Z" style="fill: #EEDFA1; stroke: none;" /><path id="sector" d="M 64.734584175709386,96.732130586663118                       A 49,49 0 0 1 60.605541082967036,97.838504348876739                      L 54.242216433186812,69.135401739550701                       A 19.6,19.6 0 0 0 55.893833670283755,68.692852234665253                      Z" style="fill: #ECDB94; stroke: none;" /><path id="sector" d="M 56.395783418782528,98.580798207316718                       A 49,49 0 0 1 52.137349980901469,98.953362857511024                      L 50.854939992360585,69.581345143004413                       A 19.6,19.6 0 0 0 52.558313367513009,69.432319282926684                      Z" style="fill: #EAD688; stroke: none;" /><path id="sector" d="M 47.862650019098545,98.953362857511024                       A 49,49 0 0 1 43.604216581217464,98.580798207316718                      L 47.441686632486984,69.432319282926684                       A 19.6,19.6 0 0 0 49.145060007639415,69.581345143004413                      Z" style="fill: #E8D27B; stroke: none;" /><path id="sector" d="M 39.394458917032978,97.838504348876739                       A 49,49 0 0 1 35.265415824290621,96.732130586663118                      L 44.106166329716245,68.692852234665253                       A 19.6,19.6 0 0 0 45.757783566813188,69.135401739550701                      Z" style="fill: #E5CE6E; stroke: none;" /><path id="sector" d="M 31.248511814110607,95.270097093053053                       A 49,49 0 0 1 27.374317951483345,93.463530825732875                      L 40.949727180593342,67.38541233029315                       A 19.6,19.6 0 0 0 42.49940472564424,68.108038837221216                      Z" style="fill: #E3C962; stroke: none;" /><path id="sector" d="M 23.672319191005631,91.326180844831384                       A 49,49 0 0 1 20.170689978572703,88.874313674270525                      L 38.068275991429083,65.549725469708221                       A 19.6,19.6 0 0 0 39.468927676402252,66.530472337932565                      Z" style="fill: #E1C555; stroke: none;" /><path id="sector" d="M 16.896079826832654,86.126589503696081                       A 49,49 0 0 1 13.873410496303933,83.103920173167353                      L 35.549364198521573,63.241568069266947                       A 19.6,19.6 0 0 0 36.75843193073306,64.450635801478427                      Z" style="fill: #DFC149; stroke: none;" /><path id="sector" d="M 11.12568632572949,79.829310021427318                       A 49,49 0 0 1 8.6738191551686086,76.327680808994387                      L 33.469527662067442,60.531072323597755                       A 19.6,19.6 0 0 0 34.450274530291793,61.931724008570932                      Z" style="fill: #DDBC3C; stroke: none;" /><path id="sector" d="M 6.5364691742671326,72.625682048516637                       A 49,49 0 0 1 4.7299029069469611,68.751488185889428                      L 31.891961162778784,57.500595274355774                       A 19.6,19.6 0 0 0 32.61458766970685,59.050272819406658                      Z" style="fill: #DAB82F; stroke: none;" /><path id="sector" d="M 3.2678694133368893,64.734584175709415                       A 49,49 0 0 1 2.1614956511232677,60.605541082967036                      L 30.864598260449306,54.242216433186812                       A 19.6,19.6 0 0 0 31.307147765334754,55.893833670283769                      Z" style="fill: #D5B226; stroke: none;" /><path id="sector" d="M 1.4192017926832889,56.395783418782528                       A 49,49 0 0 1 1.0466371424889687,52.137349980901469                      L 30.418654856995587,50.854939992360585                       A 19.6,19.6 0 0 0 30.567680717073316,52.558313367513009                      Z" style="fill: #C8A723; stroke: none;" /><path id="sector" d="M 1.0466371424889687,47.862650019098545                       A 49,49 0 0 1 1.4192017926832889,43.604216581217486                      L 30.567680717073312,47.441686632486991                       A 19.6,19.6 0 0 0 30.418654856995587,49.145060007639422                      Z" style="fill: #BC9D21; stroke: none;" /><path id="sector" d="M 2.1614956511232606,39.394458917032978                       A 49,49 0 0 1 3.2678694133368822,35.265415824290599                      L 31.307147765334754,44.106166329716238                       A 19.6,19.6 0 0 0 30.864598260449302,45.757783566813188                      Z" style="fill: #AF921F; stroke: none;" /><path id="sector" d="M 4.729902906946954,31.248511814110589                       A 49,49 0 0 1 6.5364691742671184,27.37431795148337                      L 32.61458766970685,40.949727180593349                       A 19.6,19.6 0 0 0 31.891961162778781,42.499404725644233                      Z" style="fill: #A3881D; stroke: none;" /><path id="sector" d="M 8.6738191551686015,23.672319191005631                       A 49,49 0 0 1 11.125686325729475,20.170689978572693                      L 34.450274530291793,38.068275991429076                       A 19.6,19.6 0 0 0 33.469527662067435,39.468927676402252                      Z" style="fill: #967D1A; stroke: none;" /><path id="sector" d="M 13.873410496303912,16.896079826832654                       A 49,49 0 0 1 16.89607982683264,13.873410496303933                      L 36.758431930733053,35.549364198521573                       A 19.6,19.6 0 0 0 35.549364198521566,36.75843193073306                      Z" style="fill: #897318; stroke: none;" /><path id="sector" d="M 20.170689978572678,11.12568632572949                       A 49,49 0 0 1 23.672319191005613,8.6738191551686086                      L 39.468927676402245,33.469527662067442                       A 19.6,19.6 0 0 0 38.068275991429068,34.450274530291793                      Z" style="fill: #7D6816; stroke: none;" /><path id="sector" d="M 27.374317951483352,6.5364691742671326                       A 49,49 0 0 1 31.248511814110572,4.7299029069469611                      L 42.499404725644226,31.891961162778784                       A 19.6,19.6 0 0 0 40.949727180593342,32.61458766970685                      Z" style="fill: #705E14; stroke: none;" /><path id="sector" d="M 35.265415824290585,3.2678694133368893                       A 49,49 0 0 1 39.394458917032956,2.1614956511232677                      L 45.757783566813181,30.864598260449306                       A 19.6,19.6 0 0 0 44.106166329716231,31.307147765334754                      Z" style="fill: #635312; stroke: none;" /><path id="sector" d="M 43.604216581217464,1.4192017926832889                       A 49,49 0 0 1 47.862650019098524,1.0466371424889687                      L 49.145060007639408,30.418654856995587                       A 19.6,19.6 0 0 0 47.441686632486984,30.567680717073316                      Z" style="fill: #57480F; stroke: none;" /></svg><script type="text/javascript">
+      var colors = ["#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F7F0D4", "#F5ECC7", "#F3E8BA", "#F1E3AE", "#EEDFA1", "#ECDB94", "#EAD688", "#E8D27B", "#E5CE6E", "#E3C962", "#E1C555", "#DFC149", "#DDBC3C", "#DAB82F", "#D5B226", "#C8A723", "#BC9D21", "#AF921F", "#A3881D", "#967D1A", "#897318", "#7D6816", "#705E14", "#635312", "#57480F"];
+      var sectors = document.getElementById("spinner").getElementsByTagName("path");
+      var spinning = 0;  
+      var greyout = document.getElementById("greyout");
+      var spinner = document.getElementById("spinner");
+
+      function resizeSpinner()
+      {
+        if (spinning)
+        {
+          var height = Math.max(document.height, window.innerHeight);
+          greyout.setAttribute("style", "background-color: #FFF5CC; opacity: 0.7; height: " + height + "px; width: 100%; position:absolute; top: 0px; left: 0px;");
+          
+          var left = Math.round(window.pageXOffset + (window.innerWidth - 100) / 2);
+          var top = Math.round(window.pageYOffset + (window.innerHeight - 100) / 2);
+          spinner.style.position = "absolute";
+          spinner.style.top = top + "px";
+          spinner.style.left = left + "px";
+          spinner.style.display = "";
+        }
+      }
+
+      function startSpinning()
+      {
+        if (spinning == 0)
+        {
+          spin(0);
+        }
+      }
+
+      function spin(color)
+      {
+        if (spinning == 0)
+        {
+          spinning = 1;
+          resizeSpinner();
+        }
+        for (var s = 35; s >= 0; --s)
+        {
+          sectors[(color + s) % 36].setAttribute("style", "fill:" + colors[s] + "; opacity: 0.6");
+        }
+        window.setTimeout("spin((" + (color + 1) + ") % 36)", 40);
+      }
+    </script><script type="text/javascript">
+    var task = document.getElementById("task");
+    var name = document.getElementById("name");
+    var text = document.getElementById("text");
+    var other = document.getElementById("other");
+    var view = document.getElementById("view");
+    var textChanged = document.getElementById("textChanged");
+    var tabs = document.getElementsByName("tab");
+    var divs = getElementChildren(document.getElementById("divs"));
+    var uri = document.getElementById("uri");
+    var file = document.getElementById("file");
+    var frameset = document.getElementById("frameset");
+    
+    var active = VIEW;
+
+    function okToClear()
+    {
+      return text.value == "" || confirm("OK to clear current grammar?");
+    }
+    
+    function clear()
+    {
+      if (okToClear())
+      {
+        text.value = "";
+        name.value = "";
+        changeText();
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    
+    function save()
+    {
+      if (text.value != "")
+      {
+        task.value = "SAVE";
+        document.forms.data.submit();
+      }
+    }
+
+    function resizeEditor()
+    {
+      if (active == EDIT)
+      {
+        var height = "innerHeight" in window
+                   ? window.innerHeight
+                   : document.documentElement.offsetHeight;
+        text.style.height = (height - text.offsetTop - 55) + "px";
+      }
+    }
+    
+    function resizeDivs()
+    {
+      for (var i = 0; i < divs.length; ++i)
+      {
+        divs[i].style.height = (window.innerHeight - divs[i].offsetTop - 10) + "px";
+      }
+    }
+    
+    function resize()
+    {
+      resizeDivs();
+      resizeEditor();
+      resizeSpinner();
+    }
+    
+    function tab(t)
+    {
+      var next = t == active ? null
+               : t == EDIT ? "EDIT"
+               : t == VIEW ? "VIEW"
+               : null;
+      if (next != null && uri.value != "")
+      {
+        if (okToClear())
+        {
+          submit(next);
+        }
+        else
+        {
+          setUri("");
+        }
+      }
+      else if (next == "VIEW" && textChanged.value != "")
+      {
+        submit(next);
+      }
+      else
+      {
+        tabs[active].className = "";
+        divs[active].className = ""; 
+        active = t;
+        tabs[active].className = "active";
+        divs[active].className = "active"; 
+        
+        if (active == ABOUT && frameset.src == "")
+        {
+          frameset.src = "doc-frameset";
+        }
+        resize();
+      }
+    }
+
+    function load()
+    {
+      if (file.value != "" && okToClear())
+      {
+        submit("LOAD");
+      }
+    }
+    
+    function setUri(input)
+    {
+      if (input == "") other.checked = true;
+      uri.value = input;
+      return true;
+    }
+    
+    function selfDescribe()
+    {
+      if (okToClear())
+      {
+        setUri(document.location.href);
+        submit("VIEW");
+      }
+    }
+
+    function changeText()
+    {
+      textChanged.value = true;
+      return true;
+    }
+
+    function submit(t)
+    {
+      task.value = t;
+      document.forms.data.time.value = new Date().getTime();
+      document.forms.data.submit();
+      startSpinning();
+    }
+    
+    function getElementChildren(node)
+    {
+      children = [];
+      for (child = node.firstChild; child; child = child.nextSibling)
+      {
+        if (child.nodeType === 1) children.push(child);
+      }
+      return children;
+    }
+  </script></body></html>

@@ -8,6 +8,7 @@
 <p>
 <%= link_to "Back to congress", congress_path(params[:c]) %>
 </p>
+<div class='right' style='width:450px;'><%= render 'questions'%></div>
 <%= form_for @application do |f| %>
   <%= f.error_messages %>
   <% if @application.congress_id.present?%>

@@ -46,10 +46,11 @@
       <%= link_to "All", congresses_path %>
     <% end%>
   </div>
+  <% if current_user.present? %>
   <div id='apply_btn'>
     <%= link_to "¡APLICA YA!", new_application_path(:c => @congress)%>
   </div>
-
+  <% end %>
   <div id='description'>
     <%= @congress.description.html_safe %>
   </div>

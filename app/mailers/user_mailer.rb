@@ -13,4 +13,9 @@ class UserMailer < ActionMailer::Base
     @owner = User.find_by_role("admin")
     mail(:to => @owner.email, :subject => "Mensaje de Contacto en TuFuturoUniversitario")
   end
+
+  def scholarship_message(scholarship)
+    @scholarship = scholarship
+    mail(:to => @scholarship.email, :subject => "Aplicacion de una beca")
+  end
 end

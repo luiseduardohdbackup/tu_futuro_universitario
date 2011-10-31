@@ -1,4 +1,6 @@
 TuFuturoUniversitario::Application.routes.draw do
+  resources :scholarships
+
   resources :schools
   get 'schools/page/:page', :controller => :schools, :action => "more_schools"
 

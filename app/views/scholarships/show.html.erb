@@ -1,0 +1,140 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @scholarship.name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @scholarship.last_name %>
+</p>
+
+<p>
+  <b>Middle name:</b>
+  <%= @scholarship.middle_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @scholarship.email %>
+</p>
+
+<p>
+  <b>School:</b>
+  <%= @scholarship.school_id %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%= @scholarship.birthdate %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @scholarship.sex %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @scholarship.phone %>
+</p>
+
+<p>
+  <b>Gpa:</b>
+  <%= @scholarship.gpa %>
+</p>
+
+<p>
+  <b>School activities:</b>
+  <%= @scholarship.school_activities %>
+</p>
+
+<p>
+  <b>Extracurricular activities:</b>
+  <%= @scholarship.extracurricular_activities %>
+</p>
+
+<p>
+<a href="<%= @scholarship.transcript.url %> ">
+  <b> Transcript attached </b></a>
+</p>
+
+<p>
+  <b>Curriculum:</b>
+  <%= @scholarship.curriculum %>
+</p>
+
+<p>
+  <b>Essay:</b>
+  <%= @scholarship.essay %>
+</p>
+
+<p>
+<a href="<%= @scholarship.recomendation.url %> ">
+  <b> Recomendation attached </b></a>
+</p>
+
+<p>
+<a href="<%= @scholarship.letter.url %> ">
+  <b> Letter attached </b></a>
+</p>
+
+<p>
+  <b>Name tutor:</b>
+  <%= @scholarship.name_tutor %>
+</p>
+
+<p>
+  <b>Address tutor:</b>
+  <%= @scholarship.address_tutor %>
+</p>
+
+<p>
+  <b>Home phone tutor:</b>
+  <%= @scholarship.home_phone_tutor %>
+</p>
+
+<p>
+  <b>Office phone tutor:</b>
+  <%= @scholarship.office_phone_tutor %>
+</p>
+
+<p>
+  <b>Occupation tutor:</b>
+  <%= @scholarship.occupation_tutor %>
+</p>
+
+<p>
+  <b>Monthly stipend tutor:</b>
+  <%= @scholarship.monthly_stipend_tutor %>
+</p>
+
+<p>
+  <b>Home people:</b>
+  <%= @scholarship.home_people %>
+</p>
+
+<p>
+  <b>Parents marital status:</b>
+  <%= @scholarship.parents_marital_status %>
+</p>
+
+<p>
+  <b>Siblings:</b>
+  <%= @scholarship.siblings %>
+</p>
+
+<p>
+  <b>Father name:</b>
+  <%= @scholarship.father_name %>
+</p>
+
+<p>
+  <b>Mother name:</b>
+  <%= @scholarship.mother_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_scholarship_path(@scholarship) %> |
+<%= link_to 'Back', scholarships_path %>

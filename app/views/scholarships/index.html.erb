@@ -1,0 +1,69 @@
+<h1>Listing scholarships</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Last name</th>
+    <th>Middle name</th>
+    <th>Email</th>
+    <th>School</th>
+    <th>Birthdate</th>
+    <th>Sex</th>
+    <th>Phone</th>
+    <th>Gpa</th>
+    <th>School activities</th>
+    <th>Extracurricular activities</th>
+    <th>Curriculum</th>
+    <th>Essay</th>
+    <th>Name tutor</th>
+    <th>Address tutor</th>
+    <th>Home phone tutor</th>
+    <th>Office phone tutor</th>
+    <th>Occupation tutor</th>
+    <th>Monthly stipend tutor</th>
+    <th>Home people</th>
+    <th>Parents marital status</th>
+    <th>Siblings</th>
+    <th>Father name</th>
+    <th>Mother name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scholarships.each do |scholarship| %>
+  <tr>
+    <td><%= scholarship.name %></td>
+    <td><%= scholarship.last_name %></td>
+    <td><%= scholarship.middle_name %></td>
+    <td><%= scholarship.email %></td>
+    <td><%= scholarship.school_id %></td>
+    <td><%= scholarship.birthdate %></td>
+    <td><%= scholarship.sex %></td>
+    <td><%= scholarship.phone %></td>
+    <td><%= scholarship.gpa %></td>
+    <td><%= scholarship.school_activities %></td>
+    <td><%= scholarship.extracurricular_activities %></td>
+    <td><%= scholarship.curriculum %></td>
+    <td><%= scholarship.essay %></td>
+    <td><%= scholarship.name_tutor %></td>
+    <td><%= scholarship.address_tutor %></td>
+    <td><%= scholarship.home_phone_tutor %></td>
+    <td><%= scholarship.office_phone_tutor %></td>
+    <td><%= scholarship.occupation_tutor %></td>
+    <td><%= scholarship.monthly_stipend_tutor %></td>
+    <td><%= scholarship.home_people %></td>
+    <td><%= scholarship.parents_marital_status %></td>
+    <td><%= scholarship.siblings %></td>
+    <td><%= scholarship.father_name %></td>
+    <td><%= scholarship.mother_name %></td>
+    <td><%= link_to 'Show', scholarship %></td>
+    <td><%= link_to 'Edit', edit_scholarship_path(scholarship) %></td>
+    <td><%= link_to 'Destroy', scholarship, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scholarship', new_scholarship_path %>
