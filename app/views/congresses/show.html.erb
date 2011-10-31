@@ -15,64 +15,70 @@
         <%= @congress.end_date.strftime("%I:%M:%P") %>
       </div>
     </div>
-    <b>Agrega una imagen</b>
-    <div id='picture_form'>
-      <%= form_for @picture do |f|%>
-        <%= f.hidden_field :congress_id, :value => @congress.id %>
-        <%= f.file_field :image, :style => "width:180px"%>
-        <%= f.submit "Add", :style => "float:right;"%>
-      <%end%>
-    </div>
+    <% if can? :manage, @congress%>
+      <b>Agrega una imagen</b>
+      <div id='picture_form'>
+        <%= form_for @picture do |f|%>
+          <%= f.hidden_field :congress_id, :value => @congress.id %>
+          <%= f.file_field :image, :style => "width:180px"%>
+          <%= f.submit "Add", :style => "float:right;"%>
+        <%end%>
+      </div>
+    <%end%>
     <div>
       <h4><%= @congress.area.name%></h4>
-  <div id='related'>
-    <ul>
-    <% @congress.related_congresses.each do |congress|%>
-      <li><%= link_to congress.title, congress%></li>
-    <%end%>
-    </ul>
+      <div id='related'>
+        <ul>
+          <% @congress.related_congresses.each do |congress|%>
+            <li><%= link_to congress.title, congress%></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
 
-
-  </div>
   <div class="span11 margin">
-   <h1 class="congress_title"><%= @congress.title %></h1>
-  <div>
-    <% if can? :manage, @congress%>
-      <%= link_to "Edit", edit_congress_path(@congress) %> |
-      <%= link_to "Applications", applications_congress_path %> |
-      <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
-      <%= link_to "All", congresses_path %>
-    <% end%>
-  </div>
-  <div id='apply_btn'>
-    <%= link_to "¡APLICA YA!", new_application_path(:c => @congress)%>
-  </div>
-
-  <div id='description'>
-    <%= @congress.description.html_safe %>
-  </div>
-  <ul id='pictures'>
-    <% @congress.pictures.each do |pic|%>
-      <li><%= link_to (image_tag pic.image_url(:list).to_s), "#{pic.image_url.to_s}", :rel => "pictures"%></li>
-    <%end%>
-  </ul>
-  <div id='map'>
-    <% if @congress.default_address?%>
-      <div id='address'>
-        Tecnológico de Monterrey - <%= @congress.address.humanize.titleize%><br />
+    <h1 class="congress_title"><%= @congress.title %></h1>
+    <div>
+      <% if can? :manage, @congress%>
+        <%= link_to "Edit", edit_congress_path(@congress) %> |
+        <%= link_to "Applications", applications_congress_path %> |
+        <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
+        <%= link_to "All", congresses_path %>
+      <% end%>
+    </div>
+    <% if current_user.present? %>
+      <div id='apply_btn'>
+        <%= link_to "¡APLICA YA!", new_application_path(:c => @congress)%>
       </div>
-      <div><%= image_tag @congress.default_map, :width => 605%></div>
-    <%else%>
-      <div id='address'>
-        <%= @congress.address%><br />
-      </div>
-      <div><%= image_tag @congress.address_map%></div>
-    <%end%>
-  </div>
+      <<<<<<< HEAD
 
-  
+      =======
+    <% end %>
+    >>>>>>> 60526045b7f324261e669ee4bf77c6af9969d382
+    <div id='description'>
+      <%= @congress.description.html_safe %>
+    </div>
+    <ul id='pictures'>
+      <% @congress.pictures.each do |pic|%>
+        <li><%= link_to (image_tag pic.image_url(:list).to_s), "#{pic.image_url.to_s}", :rel => "pictures"%></li>
+      <%end%>
+    </ul>
+    <div id='map'>
+      <% if @congress.default_address?%>
+        <div id='address'>
+          Tecnológico de Monterrey - <%= @congress.address.humanize.titleize%><br />
+        </div>
+        <div><%= image_tag @congress.default_map, :width => 605%></div>
+      <%else%>
+        <div id='address'>
+          <%= @congress.address%><br />
+        </div>
+        <div><%= image_tag @congress.address_map%></div>
+      <%end%>
+    </div>
+
+
   </div>
 </div>
 

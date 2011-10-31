@@ -12,53 +12,53 @@
     <div class="container">
       <div class="row span16 shade">
 
-      <div id="header" class="row span16">
-        <div class="offset-right" style="margin-top:33px; margin-right:10px; float:right;">
-          <% if current_user %>
+        <div id="header" class="row span16">
+          <div class="offset-right" style="margin-top:33px; margin-right:10px; float:right;">
+            <% if current_user %>
+              <ul class="tabs">
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="tabs">
+                <li><%= link_to 'Register', new_user_registration_path%></li>
+                <li><%= link_to 'Sign in', new_user_session_path%></li>
+              </ul>
+            <% end %>
+          </div>
+          <div class='top_menu'>
             <ul class="tabs">
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
+              <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
+              <% if can? :manage, School %>
+                <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
+              <%end%>
+              <% if can? :create, Congress%>
+                <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
+                <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
+              <%end%>
+              <% if can? :manage, User%>
+                <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
+              <%end%>
+              <li><%= link_to 'Nosotros', about_path, :class => set_if_current("about") %></li>
+              <li><%= link_to 'Contacto', contact_path, :class => set_if_current("contact") %></li>
             </ul>
-          <% else %>
-            <ul class="tabs">
-              <li><%= link_to 'Register', new_user_registration_path%></li>
-              <li><%= link_to 'Sign in', new_user_session_path%></li>
-            </ul>
+          </div>
+        </div>
+        <div class="content span16">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>
-        </div>
-        <div class='top_menu'>
-          <ul class="tabs">
-            <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
-            <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
-            <% if can? :manage, School %>
-              <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
-            <%end%>
-            <% if can? :create, Congress%>
-              <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
-              <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
-            <%end%>
-            <% if can? :manage, User%>
-              <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
-            <%end%>
-            <li><%= link_to 'Nosotros', about_path, :class => set_if_current("about") %></li>
-            <li><%= link_to 'Contacto', contact_path, :class => set_if_current("contact") %></li>
-          </ul>
-        </div>
-      </div>
-      <div class="content span16">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :class => "alert-message #{name}" %>
-        <% end %>
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :class => "alert-message #{name}" %>
+          <% end %>
 
-        <%= content_tag :h1, yield(:title) if show_title? %>
-        <%= yield %>
+          <%= content_tag :h1, yield(:title) if show_title? %>
+          <%= yield %>
+        </div>
+        <div class="footer span16">
+          DERECHOS RESERVADOS © CAM
+        </div>
       </div>
-      <div class="footer span16">
-        DERECHOS RESERVADOS © CAM
-      </div>
-    </div>
     </div>
   </body>
 </html>
