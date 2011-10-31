@@ -1,6 +1,7 @@
 class Congress < ActiveRecord::Base
   attr_accessible :start_date, :end_date, :title, :description, :image, :address, :area_id, :text_address, :user_id
   attr_accessor :text_address
+  DEFAULT_ADDRESSES = ['auditorio_luis_elizondo','centro_estudiantil', 'sala_mayor_rectoria']
 
   has_many :pictures
   has_many :applications, :dependent => :destroy
@@ -28,7 +29,8 @@ class Congress < ActiveRecord::Base
   end
 
   def default_address?
-    self.address == 'auditorio_luis_elizondo' || self.address == 'centro_estudiantil'
+    DEFAULT_ADDRESSES.each { |default| return true if self.address == default}
+    false
   end
 
   def future_date?
@@ -45,8 +47,8 @@ class Congress < ActiveRecord::Base
 
   def default_map
     "mapa_tec_#{self.address}.png"
-
   end
+
   def address_map
     "http://maps.google.com/maps/api/staticmap?size=600x300&sensor=false&zoom=16&markers=#{self.latitude}%2C#{self.longitude}"
   end

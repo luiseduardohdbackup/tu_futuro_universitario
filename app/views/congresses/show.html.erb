@@ -12,6 +12,7 @@
       <%= @congress.end_date.strftime("%I:%M:%P") %>
     </div>
   </div>
+  <% if can? :manage, @congress%>
   <b>Add a picture</b>
   <div id='picture_form'>
     <%= form_for @picture do |f|%>
@@ -20,6 +21,7 @@
       <%= f.submit "Add"%>
     <%end%>
   </div>
+<% end %>
 </div>
 
 <div id='right_sidebar'>
@@ -43,9 +45,11 @@
       <%= link_to "All", congresses_path %>
     <% end%>
   </div>
+  <% if current_user.present? %>
   <div id='apply_btn'>
     <%= link_to "APLICA YA!", new_application_path(:c => @congress)%>
   </div>
+<% end %>
   <div id='description'>
     <%= @congress.description.html_safe %>
   </div>

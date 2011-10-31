@@ -37,8 +37,9 @@
     <%= f.label "Where?"%><br />
     </p>
     <p>
-    <%= radio_button "congress", "address","auditorio_luis_elizondo", :class=>'congress_radio'%> Auditorio Luis Elizondo
-    <%= radio_button "congress", "address","centro_estudiantil", :class => 'congress_radio'%> Centro estudiantil
+    <% Congress::DEFAULT_ADDRESSES.each do |default|%>
+      <%= radio_button "congress", "address", default , :class=>'congress_radio'%> <%= default.humanize %>
+    <% end %>
     <%= radio_button "congress", "address","otro", :class => 'congress_radio'%> Otro <br />
   <div id='address'>
     <%= f.text_field :text_address, :size => 100, :value => (@congress.address unless @congress.default_address? or @congress.address=='otro') %>
