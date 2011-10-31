@@ -10,9 +10,10 @@
   </head>
   <body>
     <div class="container">
+      <div class="row span16 shade">
 
       <div id="header" class="row span16">
-        <div class="span4 offset-right" style="margin-top:23px;">
+        <div class="offset-right" style="margin-top:33px; margin-right:10px; float:right;">
           <% if current_user %>
             <ul class="tabs">
               <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
@@ -47,12 +48,17 @@
         <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :class => "alert-message #{name}" %>
+        <% end %>
+
         <%= content_tag :h1, yield(:title) if show_title? %>
         <%= yield %>
       </div>
       <div class="footer span16">
         DERECHOS RESERVADOS © CAM
       </div>
+    </div>
     </div>
   </body>
 </html>

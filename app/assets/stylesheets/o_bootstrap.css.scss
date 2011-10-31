@@ -9,8 +9,14 @@
   li a {
     background-color: #FF9900;
     color: #FFF;
+    line-height: 26px;
     &:hover{
       background-color: #009900;
+      border-color:transparent;
+    }
+    &:active {
+      color: #336699;
+      background-color: #FFFFFF;
     }
     &.activo {
       color: #336699;
@@ -44,7 +50,6 @@
   }
 }
 .image_banner {
-  margin-left:-20px;
   background-color:#333;
   height:200px;
   .span4 {
@@ -57,4 +62,23 @@
       line-height:1.2em;
     }
   }
+}
+html, body {
+  background:#4B7399;
+  background:url('bk3.png');
+}
+[class*="span"] {
+  margin-left:0px;
+}
+.margin {
+  margin-left:20px;
+}
+.shade {
+ // background:white;
+ // background:url('shade.png');
+}
+.top_menu{
+  float:right;
+  margin-top: 70px;
+  margin-right:10px;
 }

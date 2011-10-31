@@ -21,8 +21,6 @@
 }
 
 body {
-  background-color: #4B7399;
-  //font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
 
@@ -40,11 +38,7 @@ a {
   overflow: hidden;
 }
 
-.top_menu{
-  float:right;
-  margin-top: 60px;
-  margin-right:20px;
-}
+
 //////// UNUSED
 #container {
   position:relative;
@@ -57,10 +51,6 @@ a {
   @include rounded(5px);
 }
 
-#top_menu li a.activo {
-  background:url("tab_active.png") no-repeat;
-  color:#336699;
-}
 #top_menu, #session_menu{
   ul{
     padding: 0;

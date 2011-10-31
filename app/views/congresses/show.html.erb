@@ -1,5 +1,5 @@
 <div class="row show-grid">
-  <div class="span4">
+  <div class="span4 margin">
     <%= image_tag @congress.image_url(:medium).to_s %>	
     <div>
       <b>De:</b>
@@ -36,7 +36,7 @@
 
 
   </div>
-  <div class="span11">
+  <div class="span11 margin">
    <h1 class="congress_title"><%= @congress.title %></h1>
   <div>
     <% if can? :manage, @congress%>

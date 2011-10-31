@@ -1,14 +1,42 @@
 <h1>Contacto</h1>
 <form action="contact/send" method="post">
-  <b>Nombre:</b> <input name="name"/><br/>
-  <b>Email:</b> <input name="email"/><br/>
-  <b>Tel&eacute;fono:</b> <input name="phone"/><br/>
-  <b>Direcci&oacute;n:</b> <input name="address"/>
-
-  <p>
-    <b>Asunto:</b> <input name="subject"/><br/>
-    <textarea cols="40" rows="8" name="comments"></textarea>
-  </p>
-
-  <input type="submit" value="Enviar"/>
+  <div class="clearfix">
+    <label for="name">Nombre:</label>
+    <div class="input">
+     <input class="span4" id="name" name="name" size="30" type="text">
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="email">Email:</label>
+    <div class="input">
+     <input class="span4" id="email" name="email" size="30" type="text">
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="phone">Tel&eacute;fono:</label>
+    <div class="input">
+     <input class="span4" id="phone" name="phone" size="30" type="text">
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="address">Direcci&oacute;n:</label>
+    <div class="input">
+     <input class="span4" id="address" name="address" size="30" type="text">
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="subject">Asunto:</label>
+    <div class="input">
+     <input class="span4" id="subject" name="subject" size="30" type="text">
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="comments">Comentarios:</label>
+    <div class="input">
+      <textarea class="span8" id="comments" name="comments" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="actions">
+    <input class="btn primary" type="submit" value="Enviar"/>
+  </div>
 </form>
