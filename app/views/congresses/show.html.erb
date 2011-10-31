@@ -15,6 +15,7 @@
         <%= @congress.end_date.strftime("%I:%M:%P") %>
       </div>
     </div>
+    <% if can? :manage, @congress %>
     <b>Agrega una imagen</b>
     <div id='picture_form'>
       <%= form_for @picture do |f|%>
@@ -23,6 +24,7 @@
         <%= f.submit "Add", :style => "float:right;"%>
       <%end%>
     </div>
+  <% end %>
     <div>
       <h4><%= @congress.area.name%></h4>
   <div id='related'>
