@@ -1,29 +1,30 @@
-<div id='left_sidebar'>
-  <%= image_tag @congress.image_url(:medium).to_s %>	
-  <div>
-    <b>From</b>
-    <div class='mini_time'>
-      <%= @congress.start_date.strftime("%d %b %Y") %><br />
-      <%= @congress.start_date.strftime("%I:%M:%P") %>
+<div class="row show-grid">
+  <div class="span4">
+    <%= image_tag @congress.image_url(:medium).to_s %>	
+    <div>
+      <b>De:</b>
+      <div class='mini_time'>
+        <%= @congress.start_date.strftime("%d %b %Y") %>
+        &nbsp;
+        <%= @congress.start_date.strftime("%I:%M:%P") %>
+      </div>
+      <b>A:</b>
+      <div class='mini_time'>
+        <%= @congress.end_date.strftime("%d %b %Y") %>
+        &nbsp;
+        <%= @congress.end_date.strftime("%I:%M:%P") %>
+      </div>
     </div>
-    <b>To</b>
-    <div class='mini_time'>
-      <%= @congress.end_date.strftime("%d %b %Y") %>
-      <%= @congress.end_date.strftime("%I:%M:%P") %>
+    <b>Agrega una imagen</b>
+    <div id='picture_form'>
+      <%= form_for @picture do |f|%>
+        <%= f.hidden_field :congress_id, :value => @congress.id %>
+        <%= f.file_field :image, :style => "width:180px"%>
+        <%= f.submit "Add", :style => "float:right;"%>
+      <%end%>
     </div>
-  </div>
-  <b>Add a picture</b>
-  <div id='picture_form'>
-    <%= form_for @picture do |f|%>
-      <%= f.hidden_field :congress_id, :value => @congress.id %>
-      <%= f.file_field :image%>
-      <%= f.submit "Add"%>
-    <%end%>
-  </div>
-</div>
-
-<div id='right_sidebar'>
-  <h4><%= @congress.area.name%></h4>
+    <div>
+      <h4><%= @congress.area.name%></h4>
   <div id='related'>
     <ul>
     <% @congress.related_congresses.each do |congress|%>
@@ -33,8 +34,10 @@
   </div>
 </div>
 
-<div id='main'>
-  <h1 class="congress_title"><%= @congress.title %></h1>
+
+  </div>
+  <div class="span11">
+   <h1 class="congress_title"><%= @congress.title %></h1>
   <div>
     <% if can? :manage, @congress%>
       <%= link_to "Edit", edit_congress_path(@congress) %> |
@@ -44,8 +47,9 @@
     <% end%>
   </div>
   <div id='apply_btn'>
-    <%= link_to "APLICA YA!", new_application_path(:c => @congress)%>
+    <%= link_to "¡APLICA YA!", new_application_path(:c => @congress)%>
   </div>
+
   <div id='description'>
     <%= @congress.description.html_safe %>
   </div>
@@ -67,4 +71,8 @@
       <div><%= image_tag @congress.address_map%></div>
     <%end%>
   </div>
+
+  
+  </div>
 </div>
+

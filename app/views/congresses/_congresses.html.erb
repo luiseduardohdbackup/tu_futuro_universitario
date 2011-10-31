@@ -1,9 +1,13 @@
 <% c =  congresses.first %>
-<div><h2><%= c.title %></h2></div>
-<div><%= c.description[0,100] %></div>
+<div class="span16 image_banner" style="background: url('<%= c.image_url(:medium).to_s %>');">
+  <div class="span4">
+    <h2><%= c.title %></h2>
+    <%= c.description[0,100] %>
+  </div>
+</div>
 <div class="clear" style="height:50px;"></div>
 <% for congress in congresses %>
-  <div class='congress left'>
+  <div class='congress span7'>
     <div class='right'><%= Cicero.word %></div>
     <div class='left'><%= image_tag congress.image_url(:thumb).to_s%></div>
     <h4><%= link_to congress.title, congress%></h4>

@@ -9,24 +9,23 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
+    <div class="container">
 
-      <div id="header">
-        <%= image_tag "banner.png" %>
-        <div id='session_menu'>
+      <div id="header" class="row span16">
+        <div class="span4 offset-right" style="margin-top:23px;">
           <% if current_user %>
-            <ul>
+            <ul class="tabs">
               <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
             </ul>
           <% else %>
-            <ul>
+            <ul class="tabs">
               <li><%= link_to 'Register', new_user_registration_path%></li>
               <li><%= link_to 'Sign in', new_user_session_path%></li>
             </ul>
           <% end %>
         </div>
-        <div id='top_menu'>
-          <ul>
+        <div class='top_menu'>
+          <ul class="tabs">
             <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
             <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
             <% if can? :manage, School %>
@@ -42,14 +41,18 @@
             <li><%= link_to 'Nosotros', about_path, :class => set_if_current("about") %></li>
             <li><%= link_to 'Contacto', contact_path, :class => set_if_current("contact") %></li>
           </ul>
-          <div class='clear'></div>
         </div>
       </div>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+      <div class="content span16">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+        <%= content_tag :h1, yield(:title) if show_title? %>
+        <%= yield %>
+      </div>
+      <div class="footer span16">
+        DERECHOS RESERVADOS © CAM
+      </div>
     </div>
   </body>
 </html>
