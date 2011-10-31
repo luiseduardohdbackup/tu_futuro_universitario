@@ -14,6 +14,7 @@ gem 'geocoder'
 gem 'cicero'
 gem 'devise'
 gem 'cancan'
+gem "paperclip", "~> 2.4" #docs attachments
 gem 'ajaxful_rating', :git => 'git://github.com/edgarjs/ajaxful-rating.git', :branch => "rails3"
 
 group :assets do

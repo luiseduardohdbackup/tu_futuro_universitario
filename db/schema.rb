@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017212027) do
+ActiveRecord::Schema.define(:version => 20111031161105) do
 
   create_table "applications", :force => true do |t|
     t.integer  "congress_id"
@@ -63,6 +63,35 @@ ActiveRecord::Schema.define(:version => 20111017212027) do
 
   add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
   add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
+
+  create_table "scholarships", :force => true do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "email"
+    t.integer  "school_id"
+    t.date     "birthdate"
+    t.string   "sex"
+    t.string   "phone"
+    t.float    "gpa"
+    t.text     "school_activities"
+    t.text     "extracurricular_activities"
+    t.text     "curriculum"
+    t.text     "essay"
+    t.string   "name_tutor"
+    t.string   "address_tutor"
+    t.string   "home_phone_tutor"
+    t.string   "office_phone_tutor"
+    t.string   "occupation_tutor"
+    t.float    "monthly_stipend_tutor"
+    t.integer  "home_people"
+    t.string   "parents_marital_status"
+    t.integer  "siblings"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "schools", :force => true do |t|
     t.string   "name"
