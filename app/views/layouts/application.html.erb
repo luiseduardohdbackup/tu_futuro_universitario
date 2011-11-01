@@ -13,7 +13,7 @@
       <div class="row span16 shade">
 
         <div id="header" class="row span16">
-          <div class="offset-right" style="margin-top:33px; margin-right:10px; float:right;">
+          <div class="offset-right" style="margin-top:30px; margin-right:10px; float:right;">
             <% if current_user %>
               <ul class="tabs">
                 <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
@@ -56,7 +56,6 @@
           <%= yield %>
         </div>
         <div class="footer span16">
-          DERECHOS RESERVADOS © CAM
         </div>
       </div>
     </div>

@@ -1,19 +1,24 @@
 <% c =  congresses.first %>
 <div class="span16 image_banner" style="background: url('<%= c.image_url(:medium).to_s %>'); margin-left:-20px;">
-  <div class="span4" style="margin-left:20px;">
+  <div class="span4" style="margin-left:20px; margin-top:20px;">
     <h2><%= c.title %></h2>
     <%= c.description[0,100] %>
   </div>
 </div>
 <div class="clear" style="height:50px;"></div>
+<div style="margin: 0 auto;" >
 <% for congress in congresses %>
   <div class='congress span7'>
-    <div class='right'><%= Cicero.word %></div>
-    <div class='left'><%= image_tag congress.image_url(:thumb).to_s%></div>
-    <h4><%= link_to congress.title, congress%></h4>
-    <%= congress.area.name %><br />
-    <%= congress.address%><br />
-    <div class='date small'><%= congress.start_date%></div>
+    <div class="span1" style="width:50px;">
+      <%= image_tag congress.image_url(:thumb).to_s%>
+    </div>
+    <div class="_span6" style="width:350px;">
+      <div class='right'><%= Cicero.word %></div>
+      <h4><%= link_to congress.title, congress%></h4>
+      <%= congress.area.name %><br />
+      <%= congress.address%><br />
+      <div class='date small'><%= congress.start_date%></div>
+    </div>
   </div>
 <% end %>
-<div class='clear'></div>
+</div>

@@ -14,7 +14,8 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px; }
-
+//OVEERRIDE
+/*
 a {
   color: #000;
   &:visited {
@@ -22,7 +23,7 @@ a {
   &:hover {
     color: #fff;
     background-color: #000; } }
-
+*/
 div {
   &.field, &.actions {
     margin-bottom: 10px; } }

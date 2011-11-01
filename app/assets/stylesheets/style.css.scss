@@ -29,7 +29,7 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  //color: #0000FF;
 }
 
 .clear {
@@ -90,7 +90,10 @@ a {
 .congress{
   &:hover{ background:#ddd; }
   position:relative;
-  h4{margin:0 0 5px 0;}
+  h4{
+    margin:0 0 5px 0;
+    line-height:1em;
+  }
   .date{
     position:absolute;
     bottom:10px;
