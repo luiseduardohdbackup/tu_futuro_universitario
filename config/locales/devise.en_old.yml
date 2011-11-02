@@ -3,13 +3,13 @@
 en:
   errors:
     messages:
-      expired: "ha expirado, favor de renovar"
-      not_found: "no encontrado"
-      already_confirmed: "ya fue confirmado, porfaor inicie session"
-      not_locked: "no estaba bloqueado"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibio que el recurso %{resource} se salvara:"
-        other: "%{count} errores prohibieron que el recurso %{resource} se salvara:"
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
 
   devise:
     failure:

@@ -46,10 +46,7 @@
         </div>
         <div class="content span16">
           <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          <% end %>
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :class => "alert-message #{name}" %>
+            <%= content_tag :div, msg, :class => notice_trans(name) %>
           <% end %>
 
           <%= content_tag :h1, yield(:title) if show_title? %>
