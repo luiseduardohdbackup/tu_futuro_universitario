@@ -91,6 +91,18 @@ ActiveRecord::Schema.define(:version => 20111031161105) do
     t.string   "mother_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "transcript_file_name"
+    t.string   "transcript_content_type"
+    t.integer  "transcript_file_size"
+    t.datetime "transcript_updated_at"
+    t.string   "recomendation_file_name"
+    t.string   "recomendation_content_type"
+    t.integer  "recomendation_file_size"
+    t.datetime "recomendation_updated_at"
+    t.string   "letter_file_name"
+    t.string   "letter_content_type"
+    t.integer  "letter_file_size"
+    t.datetime "letter_updated_at"
   end
 
   create_table "schools", :force => true do |t|

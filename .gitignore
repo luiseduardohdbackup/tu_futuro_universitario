@@ -6,3 +6,6 @@ public/uploads/**/*
 .sass-cache/
 .psd
 .DS_Store
+public/system/letters/*
+public/system/recommendations/*
+public/system/transcripts/*
