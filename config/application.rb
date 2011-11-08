@@ -44,5 +44,13 @@ module TuFuturoUniversitario
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Monkey patch to make devise work with cancan
+    config.to_prepare do
+      Devise::PasswordsController.send(:define_method, :after_sending_reset_password_instructions_path_for) do |resource_name|
+        "new_#{resource_name}_session".to_sym
+      end
+    end
+
   end
 end
