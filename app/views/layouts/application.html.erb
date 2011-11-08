@@ -30,14 +30,14 @@
               <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
               <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
               <% if can? :manage, School %>
-                <li><%= link_to 'Schools', schools_path, :class => set_if_current("schools") %></li>
+                <li><%= link_to 'Escuelas', schools_path, :class => set_if_current("schools") %></li>
               <%end%>
               <% if can? :create, Congress%>
-                <li><%= link_to 'New Congress', new_congress_path , :class => set_if_current("congresses","new") %></li>
-                <li><%= link_to 'My Congress', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
+                <li><%= link_to 'Nuevo Congreso', new_congress_path , :class => set_if_current("congresses","new") %></li>
+                <li><%= link_to 'Mis Congresos', congresses_user_path(current_user) , :class => set_if_current("users","congresses") %></li>
               <%end%>
               <% if can? :manage, User%>
-                <li><%= link_to 'Manage Users', users_path, :class => set_if_current("users","index") %></li>
+                <li><%= link_to 'Usuarios', users_path, :class => set_if_current("users","index") %></li>
               <%end%>
               <li><%= link_to 'Nosotros', about_path, :class => set_if_current("about") %></li>
               <li><%= link_to 'Contacto', contact_path, :class => set_if_current("contact") %></li>

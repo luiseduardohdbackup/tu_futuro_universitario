@@ -1,24 +1,39 @@
-<% c =  congresses.first %>
+<% if  params[:controller].to_s != "areas" && params[:controller].to_s != "users" %>
+<%  c =  congresses.shift %>
 <div class="span16 image_banner" style="background: url('<%= c.image_url(:medium).to_s %>'); margin-left:-20px;">
   <div class="span4" style="margin-left:20px; margin-top:20px;">
     <h2><%= c.title %></h2>
     <%= c.description[0,100] %>
   </div>
 </div>
-<div class="clear" style="height:50px;"></div>
-<div style="margin: 0 auto;" >
+<div class="clear" style="height:5px;"></div>
+<% end %>
+<% if  params[:controller].to_s != "areas" && params[:controller].to_s != "users" %>
+<div style="margin-left: -20px; width:940px; overflow:auto; background: url('/assets/congress_container.png');" >
+  <div style="width:335px; padding:10px; float:left; color:white;">
+    <h3 style="color:white;"><%=Cicero.word%></h1>
+    <p><%=Cicero.paragraph%></p>
+    <a class="btn info" href="about">Leer mas</a>
+  </div>
+<% end %>
+  <div  style="overflow:auto; height:450px;">
 <% for congress in congresses %>
-  <div class='congress span7'>
+<% if  params[:controller].to_s != "areas" && params[:controller].to_s != "users" %>
+  <div class='congress span7 well'>
+<% else %>
+  <div class='congress span7 well' style="width:840px;">
+<% end %>
     <div class="span1" style="width:50px;">
       <%= image_tag congress.image_url(:thumb).to_s%>
     </div>
-    <div class="_span6" style="width:350px;">
       <div class='right'><%= Cicero.word %></div>
       <h4><%= link_to congress.title, congress%></h4>
       <%= congress.area.name %><br />
       <%= congress.address%><br />
       <div class='date small'><%= congress.start_date%></div>
-    </div>
   </div>
+<% end %>
+<% if  params[:controller].to_s != "areas" && params[:controller].to_s != "users" %>
+</div>
 <% end %>
 </div>

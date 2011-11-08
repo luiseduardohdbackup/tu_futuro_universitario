@@ -35,6 +35,7 @@
   background-color: #FFF;
   width:898px;
   padding:20px;
+  padding-bottom:5px;
   border-left: #44586E solid 1px;
   border-right: #44586E solid 1px;
 }
@@ -67,7 +68,7 @@
 }
 body {
   background-color:#4B7399;
-  background:url('bk8.png');
+  background:url('bk9.png');
   margin-top:0px;
 }
 [class*="span"] {
@@ -108,4 +109,7 @@ a {
   & label {
     color: red;
   }
+}
+#map {
+  clear:both;
 }
