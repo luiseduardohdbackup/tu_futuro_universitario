@@ -12,8 +12,8 @@
       <td><%= user.role.humanize %></td>
       <td>
         <% if can? :manage, User%>
-          <%= link_to 'Edit', edit_user_path(user)%> |
-          <%= link_to "X", user, :confirm => 'Are you sure?', :method => :delete %> 
+          <%= link_to 'Edit', edit_user_path(user), :class => 'btn success'%>
+          <%= link_to "X", user, :confirm => 'Are you sure?', :method => :delete, :class => "btn danger" %> 
         <% end%>
       </td>
     </tr>

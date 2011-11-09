@@ -8,22 +8,28 @@
 <p>
 <%= link_to "Back to congress", congress_path(params[:c]) %>
 </p>
-<div class='right' style='width:450px;'><%= render 'questions'%></div>
-<%= form_for @application do |f| %>
-  <%= f.error_messages %>
-  <% if @application.congress_id.present?%>
-    <%= f.hidden_field :congress_id, :value => @application.congress_id%>
-  <%else%>
-    <%= f.hidden_field :congress_id, :value => params[:c] %>
-  <%end%>
-  <p>
-  <%= f.hidden_field :user_id, :value => (@application.user.present? ? @application.user_id : current_user.id)%>
-  <%= f.label :title %><br />
-  <%= f.text_field :title, :size => 100 %>
-  </p>
-  <p>
-  <%= f.label :body %><br />
-  <%= f.text_area :body, :cols => 73, :rows => 30%>
-  </p>
-  <p><%= f.submit %></p>
+<div class="span8">
+  <%= form_for @application do |f| %>
+    <%= f.error_messages %>
+    <% if @application.congress_id.present?%>
+      <%= f.label :congress_id %>
+      <%= f.hidden_field :congress_id, :value => @application.congress_id%>
+    <%else%>
+      <%= f.hidden_field :congress_id, :value => params[:c] %>
+    <%end%>
+    <%= f.hidden_field :user_id, :value => (@application.user.present? ? @application.user_id : current_user.id)%>
+    <div class="clearfix">
+      <%= f.label :title %>
+      <div class="input"><%= f.text_field :title, :size => 100 %></div>
+    </div>
+    <div class="clearfix">
+      <%= f.label :body %>
+      <div class="input"><%= f.text_area :body, :cols => 73, :rows => 30%></div>
+    </div>
+</div>
+<div class='span6'><%= render 'questions'%></div>
+<div class="span16">
+  <div class="actions"><%= f.submit :class => "btn primary"%></div>
+</div>
+
 <% end %>

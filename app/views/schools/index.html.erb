@@ -2,7 +2,7 @@
 
 <%= form_tag('/schools', :method => :get, :autocomplete => "off") do  %>
   <%= text_field_tag :q, params[:q], :id => "search_field" %>
-  <%= submit_tag "Enviar", :name => nil %>
+  <%= submit_tag "Enviar", :name => nil, :class => "btn primary" %>
 <% end %>
 
 <p><%= link_to "New School", new_school_path %></p>
@@ -26,7 +26,7 @@
   <% if !@school.last_page? %>
     <br/>
     <center>
-      <%= button_tag "Load more", :class => "next", :style => "width:300px;" %>
+      <%= button_tag "Load more", :class => "btn", :style => "width:300px;" %>
     </center>
   <% end %>
 </div>
