@@ -7,7 +7,7 @@ class Scholarship < ActiveRecord::Base
   validates :email, :length => {:minimum => 3, :maximum => 254},
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 	validates_length_of :phone, :home_phone_tutor, :office_phone_tutor, :in => 7..13,
-											:message => 'Introduce un telefono de 7 a 13 digitos'
+											:message => 'Introduce un telefono de 7 a 13 digitos'	
   
 
   has_attached_file :transcript,
