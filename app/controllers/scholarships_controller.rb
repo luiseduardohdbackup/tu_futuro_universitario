@@ -1,6 +1,6 @@
 class ScholarshipsController < ApplicationController
-  # GET /scholarships
-  # GET /scholarships.json
+  #load_and_authorize_resource
+  
   def index
     @scholarships = Scholarship.all
 
@@ -25,6 +25,7 @@ class ScholarshipsController < ApplicationController
   # GET /scholarships/new.json
   def new
     @scholarship = Scholarship.new
+    @schools = School.all
 
     respond_to do |format|
       format.html # new.html.erb

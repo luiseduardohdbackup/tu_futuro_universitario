@@ -56,8 +56,7 @@
 </p>
 
 <p>
-<a href="<%= @scholarship.transcript.url %> ">
-  <b> Transcript attached </b></a>
+<%= link_to 'Transcript', @scholarship.transcript.url(:original) %>
 </p>
 
 <p>
