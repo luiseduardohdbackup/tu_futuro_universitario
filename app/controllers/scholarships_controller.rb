@@ -42,6 +42,7 @@ class ScholarshipsController < ApplicationController
   # POST /scholarships.json
   def create
     @scholarship = Scholarship.new(params[:scholarship])
+    @schools = School.all
 
     respond_to do |format|
       if @scholarship.save
