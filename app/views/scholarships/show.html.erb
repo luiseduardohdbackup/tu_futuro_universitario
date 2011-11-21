@@ -1,139 +1,128 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<div class='pull-right'>
+  <%= link_to "Editar", edit_scholarship_path(@scholarship), :class => 'btn success'%>
+    <%= link_to "Eliminar", @scholarship,:class => "btn danger", :confirm => 'Are you sure?', :method => :delete %>
+</div>
+<h1>
   <%= @scholarship.name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @scholarship.last_name %>
-</p>
-
-<p>
-  <b>Middle name:</b>
   <%= @scholarship.middle_name %>
+  <%= @scholarship.last_name %>
+</h1>
+
+<p>
+Email:
+<%= mail_to @scholarship.email %>
+</p>
+<p>
+Fecha de nacimiento:
+<%= @scholarship.birthdate %>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @scholarship.email %>
+Sexo:
+<%= @scholarship.sex %>
 </p>
 
 <p>
-  <b>School:</b>
-  <%= @scholarship.school_id %>
+Telefono:
+<%= @scholarship.phone %>
+</p>
+
+
+<h2>
+  Informacion escolar 
+</h2>
+<p>
+Escuela:
+<%= link_to @scholarship.school.name, @scholarship.school %>
 </p>
 
 <p>
-  <b>Birthdate:</b>
-  <%= @scholarship.birthdate %>
+Promedio:
+<%= @scholarship.gpa %>
 </p>
 
 <p>
-  <b>Sex:</b>
-  <%= @scholarship.sex %>
+Actividades escolares:
+<%= @scholarship.school_activities %>
 </p>
 
 <p>
-  <b>Phone:</b>
-  <%= @scholarship.phone %>
+Actividades extracurriculares 
+<%= @scholarship.extracurricular_activities %>
 </p>
 
 <p>
-  <b>Gpa:</b>
-  <%= @scholarship.gpa %>
+Curriculum:
+<%= @scholarship.curriculum %>
 </p>
 
 <p>
-  <b>School activities:</b>
-  <%= @scholarship.school_activities %>
+Essay:
+<%= @scholarship.essay %>
+</p>
+
+
+
+<h2>Información de Padres o Tutor</h2>
+<p>
+Nombre:
+<%= @scholarship.name_tutor %>
 </p>
 
 <p>
-  <b>Extracurricular activities:</b>
-  <%= @scholarship.extracurricular_activities %>
+Dirección:
+<%= @scholarship.address_tutor %>
 </p>
 
 <p>
-<%= link_to 'Transcript', @scholarship.transcript_url%>
+Telefono:
+<%= @scholarship.home_phone_tutor %>
 </p>
 
 <p>
-  <b>Curriculum:</b>
-  <%= @scholarship.curriculum %>
+Telefono oficina :
+<%= @scholarship.office_phone_tutor %>
 </p>
 
 <p>
-  <b>Essay:</b>
-  <%= @scholarship.essay %>
+Ocupación
+<%= @scholarship.occupation_tutor %>
 </p>
 
 <p>
-<a href="<%= @scholarship.recomendation.url %> ">
-  <b> Recomendation attached </b></a>
+ Sueldo Mensual
+<%= @scholarship.monthly_stipend_tutor %>
 </p>
 
 <p>
-<a href="<%= @scholarship.letter.url %> ">
-  <b> Letter attached </b></a>
+ Estado civil
+<%= @scholarship.home_people %>
 </p>
 
 <p>
-  <b>Name tutor:</b>
-  <%= @scholarship.name_tutor %>
+Parents marital status:
+<%= @scholarship.parents_marital_status %>
 </p>
 
 <p>
-  <b>Address tutor:</b>
-  <%= @scholarship.address_tutor %>
+ No. de hermanos 
+<%= @scholarship.siblings %>
 </p>
 
 <p>
-  <b>Home phone tutor:</b>
-  <%= @scholarship.home_phone_tutor %>
+Nombre del padre:
+<%= @scholarship.father_name %>
 </p>
 
 <p>
-  <b>Office phone tutor:</b>
-  <%= @scholarship.office_phone_tutor %>
+Nombre de la madre:
+<%= @scholarship.mother_name %>
 </p>
-
-<p>
-  <b>Occupation tutor:</b>
-  <%= @scholarship.occupation_tutor %>
-</p>
-
-<p>
-  <b>Monthly stipend tutor:</b>
-  <%= @scholarship.monthly_stipend_tutor %>
-</p>
-
-<p>
-  <b>Home people:</b>
-  <%= @scholarship.home_people %>
-</p>
-
-<p>
-  <b>Parents marital status:</b>
-  <%= @scholarship.parents_marital_status %>
-</p>
-
-<p>
-  <b>Siblings:</b>
-  <%= @scholarship.siblings %>
-</p>
-
-<p>
-  <b>Father name:</b>
-  <%= @scholarship.father_name %>
-</p>
-
-<p>
-  <b>Mother name:</b>
-  <%= @scholarship.mother_name %>
-</p>
+<div style='margin-top:10px;'>
+  <%= link_to 'Carta de recomendación', @scholarship.recomendation.url, :class => 'btn info'%>
+  <%= link_to  'Carta del padre o tutor', @scholarship.letter.url, :class=>'btn info'%>
+  <%= link_to 'Boleta de calificaciones', @scholarship.transcript_url, :class=>'btn info'%>
+</div>
 
 
-<%= link_to 'Edit', edit_scholarship_path(@scholarship) %> |
-<%= link_to 'Back', scholarships_path %>

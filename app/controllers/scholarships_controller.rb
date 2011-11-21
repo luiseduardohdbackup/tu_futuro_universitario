@@ -1,6 +1,7 @@
 class ScholarshipsController < ApplicationController
   #load_and_authorize_resource
-  
+  before_filter :all_schools, :except => [:index, :destroy]
+
   def index
     @scholarships = Scholarship.all
 
@@ -83,4 +84,11 @@ class ScholarshipsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+  def all_schools
+    @schools = School.all
+  end
+
 end

@@ -1,35 +1,24 @@
 <h1>Becas mandadas</h1>
 
-<table>
+<table cellspacing=0 cellpadding=0 class='zebra-striped'>
   <tr>
-    <th>Id</th>
     <th>Nombre</th>
     <th>Apellidos</th>
     <th>Email</th>
-    <th>Escuela</th>
-    <th>Cumpleaños</th>
-    <th>Promedio</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
+  <tbody>
 
-<% @scholarships.each do |scholarship| %>
-  <tr>
-    <td><%= scholarship.id %></td>
-    <td><%= scholarship.name %></td>
-    <td><%= scholarship.last_name %> <%= scholarship.middle_name %></td>
-    <td><%= scholarship.email %></td>
-    <td><%= scholarship.school_id %></td>
-    <td><%= scholarship.birthdate %></td>
-    <td><%= scholarship.gpa %></td>
-    <td><%= link_to 'Ver', scholarship %></td>
-    <td><%= link_to 'Editar', edit_scholarship_path(scholarship) %></td>
-    <td><%= link_to 'Eliminar', scholarship, confirm: 'Estas seguro de querer eliminarlo?', method: :delete %></td>
-  </tr>
-<% end %>
+    <% @scholarships.each do |scholarship| %>
+      <tr>
+        <td><%= link_to scholarship.name, scholarship %></td>
+        <td><%= scholarship.last_name %> <%= scholarship.middle_name %></td>
+        <td><%= scholarship.email %></td>
+        <td>
+          <%= link_to "Editar", edit_scholarship_path(scholarship), :class => "btn success" %>
+          <%= link_to "Eliminar", scholarship,:class => "btn danger", :confirm => 'Estas seguro de querer eliminarlo?', :method => :delete %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
 </table>
-
-<br />
-
-<%#= link_to 'New Scholarship', new_scholarship_path %>
