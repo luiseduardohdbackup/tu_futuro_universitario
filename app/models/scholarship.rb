@@ -9,10 +9,9 @@ class Scholarship < ActiveRecord::Base
 	# validates_length_of :phone, :home_phone_tutor, :office_phone_tutor, :in => 7..13,
 	#                     :message => 'Introduce un telefono de 7 a 13 digitos'	
   
-  attr_accessor :transcript
-  # , :letter, :recomendation
+  attr_accessor :transcript,:letter, :recomendation
 
   mount_uploader :transcript, FileUploader
-  # mount_uploader :letter, FileUploader
-  # mount_uploader :recomendation, FileUploader
+  mount_uploader :letter, FileUploader
+  mount_uploader :recomendation, FileUploader
 end
