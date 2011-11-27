@@ -1,5 +1,5 @@
 class ScholarshipsController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   before_filter :all_schools, :except => [:index, :destroy]
 
   def index

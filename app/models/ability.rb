@@ -15,6 +15,7 @@ class Ability
       end
     elsif user.student?
       can :create, Application
+      can :create, Scholarship
     end
     can :read, :all
   end
