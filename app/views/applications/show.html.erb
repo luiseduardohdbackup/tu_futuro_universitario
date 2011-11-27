@@ -1,8 +1,8 @@
-<h2>Application for <%= @application.congress.title %></h2>
+<h2>Aplicación para <%= @application.congress.title %></h2>
 <p>
-<%= link_to "Destroy", @application, :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to "View All", applications_congress_path(@application.congress) %>
 <% if can? :manage, @application.congress %>
+<%= link_to "Eliminar", @application, :confirm => '¿Estás seguro?', :method => :delete %> |
+<%= link_to "Ver todos", applications_congress_path(@application.congress) %>
   <%= ratings_for @application,current_user %>
 <% end %>
 </p>

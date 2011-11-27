@@ -8,7 +8,7 @@
 <%= form_for @congress do |f| %>
   <%= f.error_messages %>
   <div class="clearfix">
-    <%= f.label :title%>
+    <%= f.label :title, 'Título'%>
     <div class="input">
       <%= f.text_field :title, :size => 100, :class => "large" %>
       <%= f.hidden_field :user_id, :value => (@congress.user.present? ? @congress.user_id : current_user.id)%>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="clearfix">
-    <%= f.label "Descripcion"%>
+    <%= f.label "Descripción"%>
     <div class="input">
       <%= f.text_area :description, :cols => 73, :rows => 30, :class => "xxlarge"%>
     </div>
@@ -37,7 +37,7 @@
     <div class="input">
       <div class="inline-inputs">
        <%= f.text_field :start_date, :value => @congress.start_date.to_s, :class =>'calendar span3', :size => 46 %>
-       to
+       a
        <%= f.text_field :end_date, :value => @congress.end_date.to_s, :class => 'calendar span3', :size => 47 %>
       </div>
     </div>
@@ -55,5 +55,5 @@
       </ul>
     </div>
   </div>
-  <div class="actions"><%= f.submit :class => "btn primary" %></div>
+  <div class="actions"><%= f.submit :class => "btn primary", :value => "Crear congreso" %></div>
 <% end %>
