@@ -1,0 +1,33 @@
+<%= form_for @contact, :url => '/contacto' do |form| %>
+
+    <div class="clearfix">
+    		<%= form.label :name, 'Nombre' %> <br />
+        <div class="input">
+	        <%= form.text_field :name %>
+        </div>
+    </div>
+
+    <div class="clearfix">
+    		<%= form.label :email, 'Correo Electronico' %> <br />
+        <div class="input">
+	        <%= form.text_field :email %>
+        </div>
+    </div>
+
+    <div class="clearfix">
+    		<%= form.label :subject, 'Tipo de comentario' %> <br/>
+        <div class="input">
+	        <%= form.text_field :subject %>
+        </div>
+    </div>
+
+    <div class="clearfix">
+      <%= form.label :comments, 'Detalles' %> <br/>
+        <div class="input">
+          <%= form.text_area :comments, :cols => "65", :rows => "10" %>
+        </div>
+    </div>
+    <br/>
+    <%= form.submit "Enviar", :class => "btn primary" %>
+    </div>
+<% end %>
