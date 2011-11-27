@@ -20,25 +20,25 @@
   <div class='clearfix'>
     <%= f.label :last_name, 'Apellido Paterno' %>
     <div class='input'>
-      <%= f.text_field :last_name, :class => 'span7' %>
+      <%= f.text_field :last_name %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :middle_name, 'Apellido Materno' %>
     <div class='input'>
-      <%= f.text_field :middle_name, :class => 'span7' %>
+      <%= f.text_field :middle_name %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :email, 'Correo Electrónico' %>
     <div class='input'>
-      <%= f.text_field :email, :class => 'span7' %>
+      <%= f.text_field :email %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :school_id, 'Escuela' %>
     <div class='input'>
-      <%= f.select :school_id, options_from_collection_for_select(@schools, 'id', 'name'), :class => 'span7' %>
+      <%= f.select :school_id, options_from_collection_for_select(@schools, 'id', 'name') %>
     </div>
   </div>
   <div class='clearfix'>
@@ -56,55 +56,55 @@
   <div class='clearfix'>
     <%= f.label :phone, 'Telefono'%>
     <div class='input'>
-      <%= f.text_field :phone, :class => 'span7' %>
+      <%= f.text_field :phone %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :gpa, 'Promedio actual' %>
     <div class='input'>
-      <%= f.text_field :gpa, :class => 'span7' %>
+      <%= f.text_field :gpa %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :school_activities, 'Actividades escolares' %>
     <div class='input'>
-      <%= f.text_area :school_activities, :class => 'span7' %>
+      <%= f.text_area :school_activities %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :extracurricular_activities, 'Actividades extracurriculares' %>
     <div class='input'>
-      <%= f.text_area :extracurricular_activities, :class => 'span7' %>
+      <%= f.text_area :extracurricular_activities %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :transcript, 'Boleta de calificaciones' %>
     <div class='input'>
-      <%= f.file_field :transcript, :class => 'span7' %>
+      <%= f.file_field :transcript %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :curriculum, 'Currículum' %>
     <div class='input'>
-      <%= f.text_area :curriculum, :class => 'span7' %>
+      <%= f.text_area :curriculum %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :essay, 'Ensayo' %>
     <div class='input'>
-      <%= f.text_area :essay, :class => 'span7' %>
+      <%= f.text_area :essay %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :recomendation, 'Carta de recomendación' %>
     <div class='input'>
-      <%= f.file_field :recomendation, :class => 'span7' %>
+      <%= f.file_field :recomendation %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :letter, 'Carta del padre o tutor' %>
     <div class='input'>
-      <%= f.file_field :letter, :class => 'span7' %>
+      <%= f.file_field :letter %>
     </div>
   </div>
   <div class="field"> 
@@ -113,43 +113,43 @@
   <div class='clearfix'>
     <%= f.label :name_tutor, 'Nombre' %>
     <div class='input'>
-      <%= f.text_field :name_tutor, :class => 'span7' %>
+      <%= f.text_field :name_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :address_tutor, 'Domicilio' %>
     <div class='input'>
-      <%= f.text_field :address_tutor, :class => 'span7' %>
+      <%= f.text_field :address_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :home_phone_tutor, 'Teléfono casa' %>
     <div class='input'>
-      <%= f.text_field :home_phone_tutor, :class => 'span7' %>
+      <%= f.text_field :home_phone_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :office_phone_tutor, 'Teléfono Oficina' %>
     <div class='input'>
-      <%= f.text_field :office_phone_tutor, :class => 'span7' %>
+      <%= f.text_field :office_phone_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :occupation_tutor, 'Ocupación' %>
     <div class='input'>
-      <%= f.text_field :occupation_tutor, :class => 'span7' %>
+      <%= f.text_field :occupation_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :monthly_stipend_tutor, 'Sueldo Mensual' %>
     <div class='input'>
-      <%= f.text_field :monthly_stipend_tutor, :class => 'span7' %>
+      <%= f.text_field :monthly_stipend_tutor %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :home_people, 'No. de personas en el hogar' %>
     <div class='input'>
-      <%= f.number_field :home_people, :class => 'span7' %>
+      <%= f.number_field :home_people %>
     </div>
   </div>
   <div class='clearfix'>
@@ -161,22 +161,20 @@
   <div class='clearfix'>
     <%= f.label :siblings, 'No. de hermanos' %>
     <div class='input'>
-      <%= f.number_field :siblings, :class => 'span7' %>
+      <%= f.number_field :siblings %>
     </div>
   </div>
   <div class='clearfix'>
     <%= f.label :father_name, 'Nombre del padre' %>
     <div class='input'>
-      <%= f.text_field :father_name, :class => 'span7' %>
+      <%= f.text_field :father_name %>
     </div>
   </div>
-    <div class='clearfix'>
-      <%= f.label :mother_name, 'Nombre de la madre' %>
-      <div class='input'>
-        <%= f.text_field :mother_name, :class => 'span7' %>
-      </div>
-    </div>
+  <div class="field">
+    <%= f.label :mother_name, 'Nombre de la madre' %>
+    <%= f.text_field :mother_name %>
+  </div>
   <div class="actions">
-    <%= f.submit 'Enviar Beca', :class=> 'btn primary'%>
+    <%= f.submit 'Enviar Beca' %>
   </div>
 <% end %>
