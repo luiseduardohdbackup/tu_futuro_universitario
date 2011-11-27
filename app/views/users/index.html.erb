@@ -1,8 +1,8 @@
 <table class='big_table'>
   <tr class='heading'>
-    <td>Name</td>
+    <td>Nombre</td>
     <td>Email</td>
-    <td>Role</td>
+    <td>Rol</td>
     <td></td>
   </tr>
   <% @users.each do |user| %>
@@ -12,8 +12,8 @@
       <td><%= user.role.humanize %></td>
       <td>
         <% if can? :manage, User%>
-          <%= link_to 'Edit', edit_user_path(user), :class => 'btn success'%>
-          <%= link_to "X", user, :confirm => 'Are you sure?', :method => :delete, :class => "btn danger" %> 
+          <%= link_to 'Editar', edit_user_path(user), :class => 'btn success'%>
+          <%= link_to "X", user, :confirm => '¿Estás seguro?', :method => :delete, :class => "btn danger" %> 
         <% end%>
       </td>
     </tr>

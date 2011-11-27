@@ -9,7 +9,7 @@
   </div>
 
   <div class="clearfix">
-    <%= f.label :password %>
+    <%= f.label :password, 'Contraseña' %>
     <div class="input">
       <%= f.password_field :password %>
     </div>
@@ -17,7 +17,7 @@
 
   <% if devise_mapping.rememberable? -%>
   <div class="clearfix">
-     <%= f.label :remember_me %>
+     <%= f.label :remember_me, 'Recuérdame' %>
     <div class="input">
        <%= f.check_box :remember_me %>
     </div>

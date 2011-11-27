@@ -1,10 +1,10 @@
-<h2>Registrate</h2>
+<h2>Registro</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="clearfix">
-    <%= f.label :name %>
+    <%= f.label :name, 'Nombre' %>
     <div class="input">
       <%= f.text_field :name %>
     </div>
@@ -18,13 +18,13 @@
   </div>
 
   <div class="clearfix">
-    <%= f.label :password %>
+    <%= f.label :password, 'Contraseña' %>
     <div class="input">
       <%= f.password_field :password %>
     </div>
   </div>
   <div class="clearfix">
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation, 'Confirmar contraseña' %>
     <div class="input">
       <%= f.password_field :password_confirmation %>
     </div>
