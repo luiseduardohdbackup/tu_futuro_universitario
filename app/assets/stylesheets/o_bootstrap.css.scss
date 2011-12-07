@@ -4,6 +4,14 @@
   -border-radius:$px;
 }
 
+@mixin gradient($color1, $color2){
+  background-image: linear-gradient(bottom, $color1 , $color2);
+  background-image: -o-linear-gradient(bottom, $color1,  $color2);
+  background-image: -moz-linear-gradient(bottom, $color1, $color2);
+  background-image: -webkit-linear-gradient(bottom, $color1, $color2);
+  background-image: -ms-linear-gradient(bottom, $color1, $color2);
+}
+
 .tabs {
   border:none;
   li a {
@@ -67,8 +75,11 @@
 }
 }
 body {
-  background-color:#4B7399;
-  background:url('bk9.png');
+  //background-color:#4B7399 !important;
+  //background-color:#cc6633 !important;
+  //background:url('bk10.png');
+  @include gradient(#4B7399,#cc6633);
+  background-position:fixed;
   margin-top:0px;
 }
 [class*="span"] {
