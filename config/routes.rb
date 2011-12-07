@@ -24,9 +24,10 @@ TuFuturoUniversitario::Application.routes.draw do
 
   match 'pictures' => 'pictures#create', :via => :post
   match 'areas' => 'areas#index'
-  match 'contact' => 'main#contact'
-  match 'contact/send' => 'main#contact_send'
   match 'about' => 'main#about'
+
+  match 'contacto' => 'main#new', :as => 'contact', :via => :get
+  match 'contacto' => 'main#create', :as => 'contact', :via => :post
 
   root :to => "congresses#index"
 end

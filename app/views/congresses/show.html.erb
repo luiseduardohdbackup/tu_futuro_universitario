@@ -41,10 +41,10 @@
     <h1 class="congress_title"><%= @congress.title %></h1>
     <div>
       <% if can? :manage, @congress%>
-        <%= link_to "Edit", edit_congress_path(@congress) %> |
-        <%= link_to "Applications", applications_congress_path %> |
-        <%= link_to "X", @congress, :confirm => 'Are you sure?', :method => :delete %> |
-        <%= link_to "All", congresses_path %>
+        <%= link_to "Editar", edit_congress_path(@congress) %> |
+        <%= link_to "Aplicaciones", applications_congress_path %> |
+        <%= link_to "X", @congress, :confirm => '¿Estás seguro?', :method => :delete %> |
+        <%= link_to "Congresos", congresses_path %>
       <% end%>
     </div>
     <% if current_user.present? %>

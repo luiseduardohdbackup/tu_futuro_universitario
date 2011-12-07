@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031161105) do
+ActiveRecord::Schema.define(:version => 20111121163214) do
 
   create_table "applications", :force => true do |t|
     t.integer  "congress_id"
@@ -103,6 +103,9 @@ ActiveRecord::Schema.define(:version => 20111031161105) do
     t.string   "letter_content_type"
     t.integer  "letter_file_size"
     t.datetime "letter_updated_at"
+    t.string   "transcript"
+    t.string   "letter"
+    t.string   "recomendation"
   end
 
   create_table "schools", :force => true do |t|

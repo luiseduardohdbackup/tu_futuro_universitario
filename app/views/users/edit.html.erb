@@ -2,7 +2,7 @@
   <%= form_for @user  do |f|%>
     <%= f.error_messages %>
     <p>
-    <%= f.label :name%><br />
+    <%= f.label :name, 'Nombre'%><br />
     <%= f.text_field :name%>
     </p>
     <p>
@@ -10,11 +10,11 @@
     <%= f.text_field :email%>
     </p>
     <p>
-    <%= f.label :role %><br />
+    <%= f.label :role, 'rol'%><br />
     <%= f.select :role, User::ROLES.map{|role| [role.humanize, role]}%>
     </p>
     <p>
-    <%= f.submit "Update user" %>
+    <%= f.submit "Guardar" %>
     </p>
   <% end %>
 </div>

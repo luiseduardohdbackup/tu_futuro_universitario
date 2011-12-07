@@ -1,4 +1,6 @@
 class School < ActiveRecord::Base
+  has_many :scholarships
+
   attr_accessible :name, :contact, :phone
 
 	validates_presence_of 			:name

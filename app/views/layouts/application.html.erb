@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Tu futuro universitario" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Tú. Futuro Universitario" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
     <%= ajaxful_rating_style %>
@@ -16,18 +16,18 @@
           <div class="offset-right" style="margin-top:30px; margin-right:10px; float:right;">
             <% if current_user %>
               <ul class="tabs">
-                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete %></li>
               </ul>
             <% else %>
               <ul class="tabs">
-                <li><%= link_to 'Register', new_user_registration_path%></li>
-                <li><%= link_to 'Sign in', new_user_session_path%></li>
+                <li><%= link_to 'Regístrate', new_user_registration_path%></li>
+                <li><%= link_to 'Ingresar', new_user_session_path%></li>
               </ul>
             <% end %>
           </div>
           <div class='top_menu'>
             <ul class="tabs">
-              <li><%= link_to 'Home', congresses_path, :class => set_if_current("congresses","index") %></li>
+              <li><%= link_to 'Inicio', congresses_path, :class => set_if_current("congresses","index") %></li>
               <li><%= link_to 'Areas', areas_path , :class => set_if_current("areas") %></li>
               <% if can? :manage, School %>
                 <li><%= link_to 'Escuelas', schools_path, :class => set_if_current("schools") %></li>
@@ -40,6 +40,9 @@
                 <li><%= link_to 'Usuarios', users_path, :class => set_if_current("users","index") %></li>
               <%end%>
               <li><%= link_to 'Nosotros', about_path, :class => set_if_current("main","about") %></li>
+              <% if can? :manage, Scholarship%>
+                <li><%= link_to 'Becas', scholarships_path, :class => set_if_current("schoolarships","index") %></li>
+              <%end%>
               <li><%= link_to 'Contacto', contact_path, :class => set_if_current("main","contact") %></li>
             </ul>
           </div>

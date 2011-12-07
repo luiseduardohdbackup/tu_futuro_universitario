@@ -1,20 +1,19 @@
-<% title "Schools" %>
+<% title "Escuelas" %>
 
 <%= form_tag('/schools', :method => :get, :autocomplete => "off") do  %>
   <%= text_field_tag :q, params[:q], :id => "search_field" %>
   <%= submit_tag "Enviar", :name => nil, :class => "btn primary" %>
 <% end %>
 
-<p><%= link_to "New School", new_school_path %></p>
+<p><%= link_to "Nueva escuela", new_school_path %></p>
 
-<table cellspacing=0 cellpadding=0>
+<table cellspacing=0 cellpadding=0 class='zebra-striped'>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Contact</th>
-      <th>Phone</th>
-      <th></th>
+      <th >Nombre</th>
+      <th >Contacto</th>
+      <th >Telefono</th>
+      <th ></th>
     </tr>
   </thead>
   <tbody id="schools">
@@ -26,7 +25,7 @@
   <% if !@school.last_page? %>
     <br/>
     <center>
-      <%= button_tag "Load more", :class => "btn", :style => "width:300px;" %>
+      <%= button_tag "Cargar mas", :class => "btn", :style => "width:300px;" %>
     </center>
   <% end %>
 </div>
