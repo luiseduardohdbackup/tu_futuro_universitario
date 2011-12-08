@@ -77,8 +77,8 @@
 body {
   //background-color:#4B7399 !important;
   //background-color:#cc6633 !important;
-  //background:url('bk10.png');
-  @include gradient(#4B7399,#cc6633);
+  background:url('bk10.png');
+  //@include gradient(#4B7399,#cc6633);
   background-position:fixed;
   margin-top:0px;
 }
