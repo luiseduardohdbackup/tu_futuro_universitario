@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121163214) do
+ActiveRecord::Schema.define(:version => 20111213061621) do
 
   create_table "applications", :force => true do |t|
     t.integer  "congress_id"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20111121163214) do
     t.float    "longitude"
     t.integer  "area_id"
     t.integer  "user_id"
+  end
+
+  create_table "options", :force => true do |t|
+    t.boolean  "scholarship"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pictures", :force => true do |t|

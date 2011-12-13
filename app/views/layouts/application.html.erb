@@ -17,6 +17,9 @@
             <% if current_user %>
               <ul class="tabs">
                 <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete %></li>
+                <% if current_user.has_applied? and Option.scholarships_enabled? %>
+                  <li><%= link_to 'Gana una beca!', new_scholarship_path%></li>
+                <% end %>
               </ul>
             <% else %>
               <ul class="tabs">

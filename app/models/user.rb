@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def student?
     self.role == 'student'
   end
+
+  def has_applied?
+    self.applications.present?
+  end
 end
