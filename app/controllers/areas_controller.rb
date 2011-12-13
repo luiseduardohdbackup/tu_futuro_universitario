@@ -1,5 +1,5 @@
 class AreasController < ApplicationController
   def index
-    @areas = Area.joins(:congresses).group('areas.name')
+    @areas = Area.all
   end
 end
